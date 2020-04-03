@@ -1,0 +1,6 @@
+#include <Peasant.h>
+
+Peasant::Peasant() : Creature(25, 0, 10, 30, 10, 'P')
+{
+	skill_ = std::make_unique<Defend>();
+}
