@@ -1,13 +1,14 @@
 #pragma once
 #include <ITargetHelper.h>
 #include <IUser.h>
+
 class Skill
 {
 public:
-	Skill() {};
-	virtual void emit() {};
-private:
-	std::weak_ptr<ITargetHelper> targetHelper_;
-	std::weak_ptr<IUser> user_;
+	Skill();
+	void setTargetHelper(std::shared_ptr<ITargetHelper> targetHelper);
+	virtual void emit(IUser* user) {};
+protected:
+	std::shared_ptr<ITargetHelper> targetHelper_;
 };
 

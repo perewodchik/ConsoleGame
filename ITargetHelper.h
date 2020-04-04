@@ -1,8 +1,11 @@
 #pragma once
-#include <Creature.h>
 #include <Position.h>
+
+class Creature;
+
 class ITargetHelper
 {
+public:
 	virtual std::shared_ptr<Creature> getSingleEnemyTarget(const Position& pos) = 0;
 };
 

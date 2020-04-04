@@ -59,6 +59,9 @@
     <ClCompile Include="TargetController.cpp">
       <Filter>Misc</Filter>
     </ClCompile>
+    <ClCompile Include="Attack.cpp">
+      <Filter>Skills</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -102,6 +105,9 @@
     </ClInclude>
     <ClInclude Include="TargetController.h">
       <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Attack.h">
+      <Filter>Skills</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

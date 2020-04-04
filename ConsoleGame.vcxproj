@@ -156,6 +156,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Archer.cpp" />
+    <ClCompile Include="Attack.cpp" />
     <ClCompile Include="Battlefield.cpp" />
     <ClCompile Include="ConsoleGame.cpp" />
     <ClCompile Include="Creature.cpp" />
@@ -170,6 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Archer.h" />
+    <ClInclude Include="Attack.h" />
     <ClInclude Include="Battlefield.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="Creature.h" />

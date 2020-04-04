@@ -3,6 +3,7 @@
 #include <Position.h>
 #include <memory>
 #include <IUser.h>
+#include <Skill.h>
 class Creature : IUser
 {
 public:
@@ -24,6 +25,9 @@ public:
 	Position getPosition() { return pos_; };
 	void setTeam(int team);
 	void setPosition(Position pos);
+	
+	void setTargetHelperForSkill(std::shared_ptr<ITargetHelper> targetHelper);
+	void castSkill();
 
 private:
 	bool isProtected_;
@@ -38,5 +42,7 @@ private:
 
 	int team_;
 	Position pos_;
+protected:
+	std::unique_ptr<Skill> skill_;
 };
 

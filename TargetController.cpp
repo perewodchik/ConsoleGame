@@ -5,9 +5,9 @@ TargetController::TargetController()
 	map_ = nullptr;
 }
 
-TargetController::TargetController(std::unique_ptr<Map> map) : map_(std::move(map))
+TargetController::TargetController(std::shared_ptr<Map> map)
 {
-
+	map_ = map;
 }
 
 std::vector<std::shared_ptr<Creature> > TargetController::showAvailableEnemyCreatures(const Position& pos)

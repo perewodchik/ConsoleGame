@@ -12,6 +12,7 @@ Creature::Creature(int hp, int armor, int initiative, int maxExp, int killExp, c
 	initiative_ = initiative;
 	associatedTag_ = tag;
 	team_ = -1;
+	skill_ = std::make_unique<Skill>();
 }
 
 void Creature::receiveHeal(int value)
@@ -48,4 +49,14 @@ void Creature::setTeam(int team)
 void Creature::setPosition(Position pos)
 {
 	pos_ = pos;
+}
+
+void Creature::setTargetHelperForSkill(std::shared_ptr<ITargetHelper> targetHelper)
+{
+	skill_->setTargetHelper(targetHelper);
+}
+
+void Creature::castSkill()
+{
+	skill_->emit(this);
 }
