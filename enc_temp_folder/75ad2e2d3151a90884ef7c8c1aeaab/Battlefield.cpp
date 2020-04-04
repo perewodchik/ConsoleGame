@@ -9,6 +9,7 @@ Battlefield::Battlefield(std::vector<std::unique_ptr<Player> >& players)
 
 void Battlefield::run()
 {
+	
 	map_->drawMap();
 	TargetController targetController_(std::move(map_));
 	int hp = targetController_.getSingleEnemyTarget(Position(0, 0))->getCurrentHp();

@@ -45,19 +45,6 @@ std::shared_ptr<Creature> Map::getCreatureByPosition(const Position& pos)
 	return map_[pos.getH()][pos.getW()];
 }
 
-std::vector<std::shared_ptr<Creature> > Map::getCreatureVector()
-{
-	std::vector<std::shared_ptr<Creature> > creatures;
-	for (auto row : map_)
-	{
-		for (auto creature : row)
-		{
-			creatures.push_back(creature);
-		}
-	}
-	return creatures;
-}
-
 void Map::drawMap()
 {
 	"Drawing map\n";

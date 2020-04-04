@@ -11,7 +11,6 @@ public:
 	std::shared_ptr<Creature> getCreatureByCoordinates(int h, int w);
 	std::vector<std::vector<std::shared_ptr<Creature> > > getVectorMap() {return map_; };
 	std::shared_ptr<Creature> getCreatureByPosition(const Position& pos);
-	std::vector<std::shared_ptr<Creature> > getCreatureVector();
 	void drawMap();
 private:
 	std::vector<std::vector<std::shared_ptr<Creature> > > map_;

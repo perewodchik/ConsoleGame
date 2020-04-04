@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include <memory>
-#include <queue>
 #include <Player.h>
 #include <Map.h>
 #include <TargetController.h>
@@ -14,7 +13,5 @@ public:
 private:
 	std::vector<std::unique_ptr<Player> >& players_;
 	std::unique_ptr<Map> map_;
-
-	std::queue<std::shared_ptr<Creature> > queue_;
 };
 

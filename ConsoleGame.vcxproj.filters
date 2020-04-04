@@ -56,6 +56,9 @@
     <ClCompile Include="Position.cpp">
       <Filter>Misc</Filter>
     </ClCompile>
+    <ClCompile Include="TargetController.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -95,6 +98,9 @@
       <Filter>Misc</Filter>
     </ClInclude>
     <ClInclude Include="IUser.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="TargetController.h">
       <Filter>Misc</Filter>
     </ClInclude>
   </ItemGroup>
