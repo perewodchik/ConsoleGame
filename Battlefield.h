@@ -10,11 +10,12 @@ class Battlefield
 {
 public:
 	Battlefield(std::vector<std::unique_ptr<Player> >& players);
+	~Battlefield() { delete targetController_; };
 	void run();
 private:
 	std::vector<std::unique_ptr<Player> >& players_;
 	std::shared_ptr<Map> map_;
-	std::shared_ptr<TargetController> targetController_;
+	ITargetHelper* targetController_;
 	std::queue<std::shared_ptr<Creature> > queue_;
 };
 

@@ -26,7 +26,7 @@ public:
 	void setTeam(int team);
 	void setPosition(Position pos);
 	
-	void setTargetHelperForSkill(std::shared_ptr<ITargetHelper> targetHelper);
+	void setTargetHelperForSkill(ITargetHelper* targetHelper);
 	void castSkill();
 
 private:

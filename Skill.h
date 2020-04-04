@@ -6,9 +6,8 @@ class Skill
 {
 public:
 	Skill();
-	void setTargetHelper(std::shared_ptr<ITargetHelper> targetHelper);
+	void setTargetHelper(ITargetHelper* targetHelper);
 	virtual void emit(IUser* user) {};
 protected:
-	std::shared_ptr<ITargetHelper> targetHelper_;
+	ITargetHelper* targetHelper_;
 };
-

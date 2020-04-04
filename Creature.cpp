@@ -51,7 +51,7 @@ void Creature::setPosition(Position pos)
 	pos_ = pos;
 }
 
-void Creature::setTargetHelperForSkill(std::shared_ptr<ITargetHelper> targetHelper)
+void Creature::setTargetHelperForSkill(ITargetHelper* targetHelper)
 {
 	skill_->setTargetHelper(targetHelper);
 }
