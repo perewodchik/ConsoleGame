@@ -1,8 +1,9 @@
 #pragma once
-#include <Skill.h>
 #include <vector>
+#include <Position.h>
 #include <memory>
-class Creature
+#include <IUser.h>
+class Creature : IUser
 {
 public:
 	Creature(int hp, int armor, int initiative, int maxExp, int killExp, char tag);
@@ -14,11 +15,15 @@ public:
 	int getExperience() const { return curExperience_; };
 	int getKillExperience() const { return killExperience_; };
 	char getAssociatedTag() const { return  associatedTag_; };
-	void emitSkill() const { skill_->emit(); };
 
 	void takeDamage(int value);
 	void receiveHeal(int value);
 	void addExperience(int value);
+
+	int getTeam() { return team_; };
+	Position getPosition() { return pos_; };
+	void setTeam(int team);
+	void setPosition(Position pos);
 
 private:
 	bool isProtected_;
@@ -30,7 +35,8 @@ private:
 	int maxExperience_;
 	int killExperience_;
 	char associatedTag_;
-protected:
-	std::unique_ptr<Skill> skill_;
+
+	int team_;
+	Position pos_;
 };
 

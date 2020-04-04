@@ -18,9 +18,14 @@ void Initializer::Initialize() {
 		players_[i]->setName(input);
 
 		std::cout << input << ", Now choose your characters\n";
-		players_[i]->AddHero(std::make_shared<Peasant>());
-		players_[i]->AddHero(std::make_shared<Archer>());
-		players_[i]->AddHero(std::make_shared<Peasant>());
-		players_[i]->AddHero(std::make_shared<Peasant>());
+		players_[i]->AddCreature(std::make_shared<Peasant>());
+		players_[i]->AddCreature(std::make_shared<Archer>());
+		players_[i]->AddCreature(std::make_shared<Peasant>());
+		players_[i]->AddCreature(std::make_shared<Peasant>());
+
+		for (auto hero : players_[i]->getCreatures())
+		{
+			hero->setTeam(i);
+		}
 	}
 }

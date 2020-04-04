@@ -11,21 +11,22 @@ Map::Map(std::vector<std::unique_ptr<Player> >& players)
 	int current_column = 0;
 	for (int i = 0; i < MAX_PLAYERS; i++)
 	{
-		for (auto creature : players_[i]->getHeroes())
+		for (auto creature : players_[i]->getCreatures())
 		{
-			if (current_row >= BATTLEFIELD_WIDTH) 
+			if (current_column >= BATTLEFIELD_WIDTH) 
 			{
-				current_row = 0;
-				current_column++;
+				current_column = 0;
+				current_row++;
 			}
-			if (current_column >= BATTLEFIELD_HEIGHT)
+			if (current_row >= BATTLEFIELD_HEIGHT)
 			{
 				std::cout << "There's not enough space on the battlefield\n";
 				throw "Not enough space";
 			}
 
-			map_[current_column][current_row] = creature;
-			current_row++;
+			map_[current_row][current_column] = creature;
+			creature->setPosition(Position(current_row, current_column));
+			current_column++;
 		}
 	}
 }
@@ -45,6 +46,14 @@ void Map::drawMap()
 		for (int j = 0; j < BATTLEFIELD_WIDTH; j++)
 		{
 			std::cout << this->getCreatureByCoordinates(i,j)->getAssociatedTag();
+		}
+		std::cout << "\n";
+	}
+	for (int i = 0; i < BATTLEFIELD_HEIGHT; i++)
+	{
+		for (int j = 0; j < BATTLEFIELD_WIDTH; j++)
+		{
+			std::cout << this->getCreatureByCoordinates(i, j)->getPosition();
 		}
 		std::cout << "\n";
 	}

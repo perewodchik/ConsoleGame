@@ -11,9 +11,7 @@ Creature::Creature(int hp, int armor, int initiative, int maxExp, int killExp, c
 	killExperience_ = killExp;
 	initiative_ = initiative;
 	associatedTag_ = tag;
-	skill_ = std::make_unique<Skill>();
-	//Don't forget to push Attack and defense;
-	//skill_ = skill;
+	team_ = -1;
 }
 
 void Creature::receiveHeal(int value)
@@ -40,4 +38,14 @@ void Creature::addExperience(int value)
 	{
 		curExperience_ = maxExperience_;
 	}
+}
+
+void Creature::setTeam(int team)
+{
+	team_ = team;
+}
+
+void Creature::setPosition(Position pos)
+{
+	pos_ = pos;
 }

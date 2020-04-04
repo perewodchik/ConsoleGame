@@ -9,21 +9,17 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Файлы ресурсов">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Исходные файлы\Skills">
-      <UniqueIdentifier>{e30118fb-5de3-4885-b172-dfb5cfe59fc1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы заголовков\Skills">
-      <UniqueIdentifier>{932e2809-0c8f-4ede-8929-52bb30ea6cf9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Исходные файлы\Creatures">
+    <Filter Include="Creatures">
       <UniqueIdentifier>{cb0275b1-6424-48ec-a6d3-4630eeea49ae}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы заголовков\Creatures">
-      <UniqueIdentifier>{5fd4e660-6dae-4e58-be9e-e05271a0ddd4}</UniqueIdentifier>
+    <Filter Include="Skills">
+      <UniqueIdentifier>{e30118fb-5de3-4885-b172-dfb5cfe59fc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States">
+      <UniqueIdentifier>{2ff7d0c4-2447-402b-93bb-94cf6e2ae9ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Misc">
+      <UniqueIdentifier>{3d6d5ea2-024a-42dc-ba9c-b28dfc6dbff3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -36,29 +32,29 @@
     <ClCompile Include="Player.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Initializer.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Skill.cpp">
-      <Filter>Исходные файлы\Skills</Filter>
-    </ClCompile>
-    <ClCompile Include="Defend.cpp">
-      <Filter>Исходные файлы\Skills</Filter>
+      <Filter>Skills</Filter>
     </ClCompile>
     <ClCompile Include="Peasant.cpp">
-      <Filter>Исходные файлы\Creatures</Filter>
+      <Filter>Creatures</Filter>
     </ClCompile>
     <ClCompile Include="Creature.cpp">
-      <Filter>Исходные файлы\Creatures</Filter>
-    </ClCompile>
-    <ClCompile Include="Battlefield.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Creatures</Filter>
     </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Archer.cpp">
-      <Filter>Исходные файлы\Creatures</Filter>
+      <Filter>Creatures</Filter>
+    </ClCompile>
+    <ClCompile Include="Battlefield.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="Initializer.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="Position.cpp">
+      <Filter>Misc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -71,29 +67,35 @@
     <ClInclude Include="Config.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Initializer.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Skill.h">
-      <Filter>Файлы заголовков\Skills</Filter>
-    </ClInclude>
-    <ClInclude Include="Defend.h">
-      <Filter>Файлы заголовков\Skills</Filter>
-    </ClInclude>
-    <ClInclude Include="Peasant.h">
-      <Filter>Файлы заголовков\Creatures</Filter>
-    </ClInclude>
-    <ClInclude Include="Creature.h">
-      <Filter>Файлы заголовков\Creatures</Filter>
-    </ClInclude>
-    <ClInclude Include="Battlefield.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="Skill.h">
+      <Filter>Skills</Filter>
+    </ClInclude>
     <ClInclude Include="Archer.h">
-      <Filter>Файлы заголовков\Creatures</Filter>
+      <Filter>Creatures</Filter>
+    </ClInclude>
+    <ClInclude Include="Creature.h">
+      <Filter>Creatures</Filter>
+    </ClInclude>
+    <ClInclude Include="Peasant.h">
+      <Filter>Creatures</Filter>
+    </ClInclude>
+    <ClInclude Include="Initializer.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="Battlefield.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="Position.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="ITargetHelper.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="IUser.h">
+      <Filter>Misc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
