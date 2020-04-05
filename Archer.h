@@ -5,6 +5,5 @@ class Archer : public Creature
 {
 public:
 	Archer();
-	
 };
 

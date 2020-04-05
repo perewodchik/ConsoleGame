@@ -3,29 +3,33 @@
 #include <Battlefield.h>
 
 Game::Game() {
-	isRunning_ = true;
-	curState = INIT;
+	m_isRunning = true;
+	m_curState = INIT;
 	for (int i = 0; i < MAX_PLAYERS; i++)
 	{
-		players_.push_back(std::make_unique<Player>());
+		m_players.push_back(std::make_unique<Player>());
 	}
+	m_targetController = new TargetController;
 }
 
-void Game::update() {
-	switch (curState) 
+void Game::run() {
+	while (m_isRunning)
 	{
-		case INIT:
+		switch (m_curState)
 		{
-			Initializer initializer(players_);
-			initializer.Initialize();
-			curState = BATTLE;
-			break;
-		}
-		case BATTLE:
-		{
-			Battlefield battlefield(players_);
-			battlefield.run();
+			case INIT:
+			{
+				Initializer initializer(m_players, m_targetController);
+				initializer.Initialize();
+				m_curState = BATTLE;
+				break;
+			}
+			case BATTLE:
+			{
+				Battlefield battlefield(m_players, m_targetController);
+				battlefield.run();
+				break;
+			}
 		}
 	}
-	
 }

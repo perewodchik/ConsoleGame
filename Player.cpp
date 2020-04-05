@@ -5,7 +5,7 @@ Player::Player()
 {
 }
 
-void Player::AddCreature(std::shared_ptr<Creature> hero_sptr)
+void Player::addCreature(std::shared_ptr<Creature> hero_sptr)
 {
-	creatures_.push_back(hero_sptr);
+	m_creatures.push_back(hero_sptr);
 }

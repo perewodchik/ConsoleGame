@@ -2,37 +2,27 @@
 
 TargetController::TargetController()
 {
-	map_ = nullptr;
-}
-
-TargetController::TargetController(std::shared_ptr<Map> map)
-{
-	map_ = map;
+	m_map = nullptr;
 }
 
 std::vector<std::shared_ptr<Creature> > TargetController::showAvailableEnemyCreatures(const Position& pos)
 {
-	if (map_ == nullptr)
+	if (m_map == nullptr)
 	{
-		std::cout << "Map is not initialized";
+		std::cout << "[ERROR]: map is not initialized\n";
 		return {};
 	}
 	int counter = 1;
 	std::vector<std::shared_ptr<Creature> > creatures;
 	std::cout << "+---+------------+---------------+----------+\n";
-	for (auto creature : map_->getCreatureVector())
+	for (auto creature : m_map->getCreatureVector())
 	{
-		// +---+-----------+-------------+---------+
-		// | 1 | TAG = [A] | POS = (1,1) | HP = 10 |
-		// | 2 | TAG = [P] | POS = (1,2) | HP = 25 |
-		// +---+-----------+-------------+---------+
-
-		if (map_->getCreatureByPosition(pos)->getTeam() != creature->getTeam())
+		if (m_map->getCreatureByPosition(pos)->getTeam() != creature->getTeam())
 		{
 			std::cout << "| " << counter << " | ";
-			std::cout << " TAG = [" << creature->getAssociatedTag() << "] | ";
+			std::cout << " TAG = [" << creature->getTag() << "] | ";
 			std::cout << " POS = " << creature->getPosition() << " | ";
-			std::cout << " HP = " << creature->getCurrentHp() << " |\n";
+			std::cout << " HP = " << creature->getHealth() << " |\n";
 
 			creatures.push_back(creature);
 			counter++;
@@ -44,26 +34,35 @@ std::vector<std::shared_ptr<Creature> > TargetController::showAvailableEnemyCrea
 
 std::shared_ptr<Creature> TargetController::getSingleEnemyTarget(const Position& pos)
 {
-	if (map_ == nullptr)
+	if (m_map == nullptr)
 	{
-		std::cout << "Map is not initialized";
+		std::cout << "[ERROR]: Map is not initialized";
 		return nullptr;
 	}
-	else
+
+	auto AvailableCreatures = this->showAvailableEnemyCreatures(pos);
+	if (AvailableCreatures.size() == 0)
 	{
-		auto AvailableCreatures = this->showAvailableEnemyCreatures(pos);
-		if (AvailableCreatures.size() == 0)
-		{
-			std::cout << "No available creatures\n";
-			return nullptr;
-		}
-		int choice = -1;
-		std::cin >> choice;
-		while (choice <= 0 || choice > AvailableCreatures.size() + 1)
-		{
-			std::cout << "Incorrect value. Please type a creature from 1 to " << AvailableCreatures.size() + 1 << "\n";
-			std::cin >> choice;
-		}
-		return AvailableCreatures[choice - 1];
+		std::cout << "No available creatures\n";
+		return nullptr;
 	}
+	int choice = -1;
+	std::cin >> choice;
+	while (choice <= 0 || choice > AvailableCreatures.size() + 1)
+	{
+		std::cout << "Incorrect value. Please type a creature from 1 to " << AvailableCreatures.size() + 1 << "\n";
+		std::cin >> choice;
+	}
+	return AvailableCreatures[choice - 1];
+}
+
+std::shared_ptr<Creature> TargetController::getSelf(const Position& pos)
+{
+	if (m_map == nullptr)
+	{
+		std::cout << "[ERROR]: Map is not initialized";
+		return nullptr;
+	}
+
+	return m_map->getCreatureByPosition(pos);
 }

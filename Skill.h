@@ -5,9 +5,14 @@
 class Skill
 {
 public:
-	Skill();
+	Skill(std::string spellName);
 	void setTargetHelper(ITargetHelper* targetHelper);
-	virtual void emit(IUser* user) {};
+	void setUser(std::shared_ptr<IUser> user);
+	std::string getSpellName() { return m_spellName; };
+
+	virtual void emit() {};
 protected:
-	ITargetHelper* targetHelper_;
+	ITargetHelper* m_targetHelper;
+	std::string m_spellName;
+	std::weak_ptr<IUser> m_user;
 };

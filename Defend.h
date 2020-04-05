@@ -1,11 +1,9 @@
 #pragma once
 #include <Skill.h>
-#include <Creature.h>
-
-class Attack : public Skill
+class Defend : public Skill
 {
 public:
-	Attack();
+	Defend();
 	virtual void emit();
 };
 

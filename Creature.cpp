@@ -1,62 +1,59 @@
 #include <Creature.h>
+#include <Attack.h>
+#include <Defend.h>
 
-Creature::Creature(int hp, int armor, int initiative, int maxExp, int killExp, char tag)
+Creature::Creature(int hp, int armor, int initiative, int maxExp, int killExp, std::string name, char tag)
 {
-	isProtected_ = false;
-	curExperience_ = 0;
-	hp_ = hp;
-	maxHp_ = hp;
-	armor_ = armor;
-	maxExperience_ = maxExp;
-	killExperience_ = killExp;
-	initiative_ = initiative;
-	associatedTag_ = tag;
-	team_ = -1;
-	skill_ = std::make_unique<Skill>();
+	m_isDefending = false;
+	m_curExp = 0;
+	m_health = hp;
+	m_maxHealth = hp;
+	m_armor = armor;
+	m_maxExp = maxExp;
+	m_killExp = killExp;
+	m_initiative = initiative;
+	m_name = name;
+	m_tag = tag;
+	m_team = -1;
+	m_skills.push_back(std::make_unique<Attack>());
+	m_skills.push_back(std::make_unique<Defend>());
 }
 
 void Creature::receiveHeal(int value)
 {
-	hp_ += value;
-	if (hp_ >= maxHp_)
-	{
-		hp_ = maxHp_;
-	}
+	m_health += value;
+	if (m_health >= m_maxHealth)
+		m_health = m_maxHealth;
 }
 
 void Creature::takeDamage(int value)
 {
-	if (isProtected_)
+	if (m_isDefending)
 		value /= 2;
-	value *= 1 - armor_ / 100.0;
-	hp_ -= value;
+	value *= 1 - m_armor / 100.0;
+	m_health -= value;
 }
 
 void Creature::addExperience(int value)
 {
-	curExperience_ += value;
-	if (curExperience_ > maxExperience_)
+	m_curExp += value;
+	if (m_curExp > m_maxExp)
 	{
-		curExperience_ = maxExperience_;
+		m_curExp = m_maxExp;
 	}
 }
 
 void Creature::setTeam(int team)
 {
-	team_ = team;
+	m_team = team;
 }
 
 void Creature::setPosition(Position pos)
 {
-	pos_ = pos;
+	m_position = pos;
 }
 
-void Creature::setTargetHelperForSkill(ITargetHelper* targetHelper)
+void Creature::startDefending()
 {
-	skill_->setTargetHelper(targetHelper);
-}
-
-void Creature::castSkill()
-{
-	skill_->emit(this);
+	m_isDefending = true;
 }

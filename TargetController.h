@@ -5,11 +5,13 @@ class TargetController : public ITargetHelper
 {
 public:
 	TargetController();
-	TargetController(std::shared_ptr<Map> map_);
-	void setMap(std::unique_ptr<Map> map) { map_ = std::move(map); };
+	void setMap(Map* map) { m_map = map; };
 	std::vector<std::shared_ptr<Creature> > showAvailableEnemyCreatures(const Position& pos);
+
+	//ITargetHelper methods
 	virtual std::shared_ptr<Creature> getSingleEnemyTarget(const Position& pos);
+	virtual std::shared_ptr<Creature> getSelf(const Position& pos);
 private:
-	std::shared_ptr<Map> map_;
+	Map* m_map;
 };
 

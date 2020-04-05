@@ -1,11 +1,17 @@
 #include <Skill.h>
 
-Skill::Skill()
+Skill::Skill(std::string spellName)
 {
-	targetHelper_ = nullptr;
+	m_targetHelper = nullptr;
+	m_spellName = spellName;
 }
 
 void Skill::setTargetHelper(ITargetHelper* targetHelper)
 {
-	targetHelper_ = targetHelper;
+	m_targetHelper = targetHelper;
+}
+
+void Skill::setUser(std::shared_ptr<IUser> user)
+{
+	m_user = user;
 }
