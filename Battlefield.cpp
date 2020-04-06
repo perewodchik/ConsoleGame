@@ -24,7 +24,8 @@ int Battlefield::m_findWinner()
 	bool flag = false;
 	for (auto creature : m_creaturesOrder)
 	{
-		if (winner == creature->getTeam())
+
+		if (creature->isDead() || winner == creature->getTeam())
 			continue;
 
 		if (!flag)
@@ -44,31 +45,36 @@ void Battlefield::run()
 {
 	while (!m_findWinner())
 	{
-		/*
-			Player chooses skill
-			Skill resolves
-			Removing dead creatures, changing order
-		*/
 
 		m_map->drawMap();
-
-
 		std::cout << "Order: ";
-		for (auto creature : m_creaturesOrder) 
+		for (auto creature : m_creaturesOrder)
+		{
+			if (creature->isDead() == true)
+				continue;
 			std::cout << creature->getTag() << " ";
+		}
+			
 		std::cout << "\n\n";
 
-		auto creature = m_creaturesOrder[0];
+		
+		int iDeadCheck = 0;
+		auto currentCreature = m_creaturesOrder[iDeadCheck];
+		while (currentCreature->isDead() == true) {
+			iDeadCheck++;
+			currentCreature = m_creaturesOrder[iDeadCheck];
+		}
+
 		std::cout
-			<< m_players[creature->getTeam() - 1]->getName()
-			<< " @ " << creature->getName()
-			<< " HP=" << creature->getHealth()
-			<< ", ARMOR=" << creature->getArmor()
-			<< ", DEF=" << creature->getIsDefending()
-			<< ", POS=" << creature->getPosition()
+			<< m_players[currentCreature->getTeam() - 1]->getName()
+			<< " @ " << currentCreature->getName()
+			<< " HP=" << currentCreature->getHealth()
+			<< ", ARMOR=" << currentCreature->getArmor()
+			<< ", DEF=" << currentCreature->getIsDefending()
+			<< ", POS=" << currentCreature->getPosition()
 			<< "\n";
 
-		auto skills = creature->getSkills();
+		auto skills = currentCreature->getSkills();
 		for (int i = 0; i < skills.size(); i++)
 		{
 			std::cout 
@@ -87,14 +93,32 @@ void Battlefield::run()
 		
 		if (numInput == 0)
 		{
-			std::cout << "You have chose adv map, but it doesn't work yet\n";
+			std::cout << "You have chosen adv map, but it doesn't work yet\n";
 			continue;
 		}
 		
+
+		system("cls");
+		m_map->drawMap();
 		skills[numInput-1]->emit();
 
+		for (int i = 0; i < m_creaturesOrder.size(); i++)
+		{
+			auto creature = m_creaturesOrder[i];
+			if (creature->getHealth() <= 0 && !creature->isDead())
+			{
+				std::cout << creature->getName()
+					<< " at position " << creature->getPosition()
+					<< " has died\n";
+				creature->setIsDead(true);
+			}
+		}
+		m_creaturesOrder.push_back(currentCreature);
 		
-
-
+		system("pause");
+		system("cls");
 	}
+	std::cout << m_players[m_findWinner()-1]->getName() << ", you have won!";
+	int a;
+	std::cin >> a;
 }

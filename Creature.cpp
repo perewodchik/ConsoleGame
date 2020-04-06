@@ -15,6 +15,7 @@ Creature::Creature(int hp, int armor, int initiative, int maxExp, int killExp, s
 	m_name = name;
 	m_tag = tag;
 	m_team = -1;
+	m_isDead = false;
 	m_skills.push_back(std::make_unique<Attack>());
 	m_skills.push_back(std::make_unique<Defend>());
 }
@@ -41,16 +42,6 @@ void Creature::addExperience(int value)
 	{
 		m_curExp = m_maxExp;
 	}
-}
-
-void Creature::setTeam(int team)
-{
-	m_team = team;
-}
-
-void Creature::setPosition(Position pos)
-{
-	m_position = pos;
 }
 
 void Creature::startDefending()

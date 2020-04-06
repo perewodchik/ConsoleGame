@@ -22,6 +22,7 @@ public:
 	int  getExp        () const { return m_curExp;      };
 	int  getKillExp    () const { return m_killExp;     };
 	int  getInitiative () const { return m_initiative;  };
+	int isDead      () const { return m_isDead;      };
 	bool getIsDefending() const { return m_isDefending; };
 	char getTag        () const { return m_tag;         };
 	std::string getName() const { return m_name;        };
@@ -29,15 +30,15 @@ public:
 	std::vector<std::shared_ptr<Skill> > getSkills() { return m_skills; };
 
 	//Creature setter methods
-	void setTeam(int team);
-	void setPosition(Position pos);
+	void setTeam(int team)		   { m_team = team;    };
+	void setPosition(Position pos) { m_position = pos; };
+	void setIsDead(bool state)     { m_isDead = state; };
 
 	//Battle related methods
 	void takeDamage   (int value);
 	void receiveHeal  (int value);
 	void addExperience(int value);
 	void startDefending();
-	void castSkill(int index);
 
 private:
 	bool m_isDefending;
@@ -50,6 +51,7 @@ private:
 	int  m_killExp;
 	int  m_team;
 	char m_tag;
+	int m_isDead;
 	std::string m_name;
 	Position m_position;
 protected:

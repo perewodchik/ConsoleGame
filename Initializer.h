@@ -2,6 +2,8 @@
 #include <vector>
 #include <Player.h>
 #include <TargetController.h>
+#include <Windows.h>
+
 class Initializer
 {
 public:

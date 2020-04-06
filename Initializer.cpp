@@ -2,6 +2,7 @@
 #include <Config.h>
 #include <Peasant.h>
 #include <Archer.h>
+#include <string>
 
 Initializer::Initializer(std::vector<std::unique_ptr<Player> >& players,
 	TargetController* targetController):
@@ -15,18 +16,12 @@ void Initializer::Initialize() {
 	std::string strInput;
 	for (int i = 0; i < MAX_PLAYERS; i++)
 	{
-		/*
-			+---+---------+----+-------+---------+----------+------------+
-			| # |  CLASS  | HP | ARMOR | MAX_EXP | EXP_KILL | INITIATIVE |
-			+---+---------+----+-------+---------+----------+------------+
-			| 1 | PEASANT | 25 |   0   |    30   |    10    |     0      |    
-			| 2 |  ARCHER | 50 |   0   |   100   |    40    |    70      |    
-			| 3 |  NARUTO | 80 |  20   |    60   |    80    |    75      |
-			+---+---------+----+-------+---------+----------+------------+
-
 		std::cout << "Enter name of player " << i+1 << ": ";
 		std::cin >> strInput;
 		m_players[i]->setName(strInput);
+
+		system("cls");
+
 		std::cout << strInput << ", choose your characters:\n"
 			<< "+---+---------+----+-------+---------+----------+------------+\n"
 			<< "| # |  CLASS  | HP | ARMOR | MAX_EXP | EXP_KILL | INITIATIVE |\n"
@@ -41,6 +36,7 @@ void Initializer::Initialize() {
 		while (characters_selected < 4)
 		{
 			std::cin >> numInput;
+			
 			switch (numInput)
 			{
 			case 1:
@@ -59,15 +55,7 @@ void Initializer::Initialize() {
 			}
 			
 		}
-		*/
-
-		m_players[i]->setName("Kolya");
-
-		m_players[i]->addCreature(std::make_shared<Archer>());
-		m_players[i]->addCreature(std::make_shared<Archer>());
-		m_players[i]->addCreature(std::make_shared<Peasant>());
-		m_players[i]->addCreature(std::make_shared<Archer>());
-
+		
 		for (auto creature : m_players[i]->getCreatures())
 		{
 			creature->setTeam(i+1);
@@ -77,5 +65,8 @@ void Initializer::Initialize() {
 				skill->setUser(creature);
 			}
 		}
+		system("pause");
+		system("cls");
 	}
+	
 }

@@ -9,7 +9,7 @@ void Attack::emit()
 {
 	auto user = m_user.lock();
 	auto enemyTarget = 
-		m_targetHelper->getSingleEnemyTarget(user->getPosition());
+		m_targetHelper->getSingleEnemyTargetMelee(user->getPosition());
 	enemyTarget->takeDamage(25);
 	std::cout << "enemy took 25 damage\n";
 }

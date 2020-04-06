@@ -61,29 +61,30 @@ std::vector<std::shared_ptr<Creature> > Map::getCreatureVector()
 void Map::drawMap()
 {
 	"Drawing map\n";
-	for (int i = 0; i < BATTLEFIELD_HEIGHT; i++)
+	for (int h = 0; h < BATTLEFIELD_HEIGHT; h++)
 	{
-		if (i % 2 == 0)
+		if (h % 2 == 0)
 			std::cout << "+---+---+\n";
-		for (int j = 0; j < BATTLEFIELD_WIDTH; j++)
+		for (int w = 0; w < BATTLEFIELD_WIDTH; w++)
 		{
-			std::cout << "| " << this->getCreatureByCoordinates(i,j)->getTag() << " ";
+			auto creature = this->getCreatureByCoordinates(h, w);
+			if (creature == nullptr || creature->isDead())
+			{
+				std::cout << "| . ";
+			}
+			else
+			{
+				std::cout << "| " << 
+					creature->getTag() << " ";
+			}
+			
 		}
 		std::cout << "|\n";
 	}
-	/*
-		PA
-		PP
-		PA
-		PP
-
-		+---+---+
-		| P | A |
-		| P | P |
-		+---+---+
-		| P | A |
-		| P | P |
-		+---+---+
-	*/
 	std::cout << "+---+---+\n";
+}
+
+void Map::removeFromMap(const Position& pos)
+{
+	m_map[pos.getH()][pos.getW()] = nullptr;
 }

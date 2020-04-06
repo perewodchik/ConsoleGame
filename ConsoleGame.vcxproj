@@ -188,6 +188,9 @@
     <ClInclude Include="Skill.h" />
     <ClInclude Include="TargetController.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Game_rules.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

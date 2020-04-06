@@ -116,4 +116,9 @@
       <Filter>Skills</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Game_rules.txt">
+      <Filter>Файлы заголовков</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

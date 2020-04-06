@@ -5,7 +5,7 @@ TargetController::TargetController()
 	m_map = nullptr;
 }
 
-std::vector<std::shared_ptr<Creature> > TargetController::showAvailableEnemyCreatures(const Position& pos)
+std::vector<std::shared_ptr<Creature> > TargetController::showAvailableCreatures(const Position& pos, bool friendly)
 {
 	if (m_map == nullptr)
 	{
@@ -17,12 +17,19 @@ std::vector<std::shared_ptr<Creature> > TargetController::showAvailableEnemyCrea
 	std::cout << "+---+------------+---------------+----------+\n";
 	for (auto creature : m_map->getCreatureVector())
 	{
-		if (m_map->getCreatureByPosition(pos)->getTeam() != creature->getTeam())
+		if (creature == nullptr || creature->isDead())
+			continue;
+
+		if (friendly ^ (m_map->getCreatureByPosition(pos)->getTeam() != creature->getTeam()))
 		{
-			std::cout << "| " << counter << " | ";
-			std::cout << " TAG = [" << creature->getTag() << "] | ";
-			std::cout << " POS = " << creature->getPosition() << " | ";
-			std::cout << " HP = " << creature->getHealth() << " |\n";
+			std::cout << "#" << counter << ". "
+				<< creature->getName() << " "
+				<< creature->getPosition() << " "
+				<< creature->getHealth() << " HP,"
+				<< creature->getArmor() << " ARMOR";
+			if (creature->getIsDefending())
+				std::cout << ", DEFENDING";
+			std::cout << "\n";
 
 			creatures.push_back(creature);
 			counter++;
@@ -40,7 +47,7 @@ std::shared_ptr<Creature> TargetController::getSingleEnemyTarget(const Position&
 		return nullptr;
 	}
 
-	auto AvailableCreatures = this->showAvailableEnemyCreatures(pos);
+	auto AvailableCreatures = this->showAvailableCreatures(pos, false);
 	if (AvailableCreatures.size() == 0)
 	{
 		std::cout << "No available creatures\n";
@@ -65,4 +72,96 @@ std::shared_ptr<Creature> TargetController::getSelf(const Position& pos)
 	}
 
 	return m_map->getCreatureByPosition(pos);
+}
+
+
+std::shared_ptr<Creature> TargetController::getSingleEnemyTargetMelee(const Position& pos)
+{
+	if (m_map == nullptr)
+	{
+		std::cout << "[ERROR]: Map is not initialized";
+		return nullptr;
+	}
+
+	std::vector< std::shared_ptr<Creature> > AvailableCreatures;
+
+	int h = pos.getH();
+	int w = pos.getW();
+	int counter = 0;
+	auto creature = m_map->getCreatureByPosition(pos);
+
+	//Assuming HEIGHT is even
+	if (h < BATTLEFIELD_HEIGHT / 2)
+	{
+		//it goes down, we must check row with h = 2
+		//if they are dead, he can attack row h = 3
+		bool isAllRowDead = true;
+		for (int i = BATTLEFIELD_HEIGHT / 2; i < BATTLEFIELD_HEIGHT; i++)
+		{
+			if (!isAllRowDead)
+				break;
+
+			for (int j = 0; j < BATTLEFIELD_WIDTH; j++)
+			{
+				auto targetCreature = m_map->getCreatureByCoordinates(i, j);
+				if (creature->getTeam() != targetCreature->getTeam())
+				{
+					if (!targetCreature->isDead())
+					{
+						isAllRowDead = false;
+						AvailableCreatures.push_back(targetCreature);
+
+						std::cout << "#" << counter+1 << ". "
+							<< targetCreature->getName() << " "
+							<< targetCreature->getPosition() << " "
+							<< targetCreature->getHealth() << " HP,"
+							<< targetCreature->getArmor() << " ARMOR";
+						if (targetCreature->getIsDefending())
+							std::cout << ", DEFENDING";
+						std::cout << "\n";
+						counter++;
+					}
+				}
+			}
+		}
+	}
+	else
+	{
+		//it goes up, we must check row with h = 1
+		//if they are dead, he can attack row h = 0
+		//...
+		bool isAllRowDead = true;
+		for (int i = BATTLEFIELD_HEIGHT / 2 - 1; i >= 0; i--)
+		{
+			if (!isAllRowDead)
+				break;
+
+			for (int j = 0; j < BATTLEFIELD_WIDTH; j++)
+			{
+				auto targetCreature = m_map->getCreatureByCoordinates(2, j);
+				if (creature->getTeam() != targetCreature->getTeam())
+				{
+					if (!targetCreature->isDead())
+					{
+						isAllRowDead = false;
+						AvailableCreatures.push_back(targetCreature);
+					}
+				}
+			}
+		}
+	}
+
+	if (AvailableCreatures.size() == 0)
+	{
+		std::cout << "No available creatures\n";
+		return nullptr;
+	}
+	int choice = -1;
+	std::cin >> choice;
+	while (choice <= 0 || choice > AvailableCreatures.size() + 1)
+	{
+		std::cout << "Incorrect value. Please type a creature from 1 to " << AvailableCreatures.size() + 1 << "\n";
+		std::cin >> choice;
+	}
+	return AvailableCreatures[choice - 1];
 }
