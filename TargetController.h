@@ -8,8 +8,9 @@ public:
 	void setMap(Map* map) { m_map = map; };
 	std::vector<std::shared_ptr<Creature> > showAvailableCreatures(const Position& pos, bool friendly);
 
+	
 	//ITargetHelper methods
-	virtual std::shared_ptr<Creature> getSingleEnemyTarget(const Position& pos);
+	virtual std::shared_ptr<Creature> getSingleTarget(const Position& pos, bool friendly);
 	virtual std::shared_ptr<Creature> getSingleEnemyTargetMelee(const Position& pos);
 	virtual std::shared_ptr<Creature> getSelf(const Position& pos);
 private:

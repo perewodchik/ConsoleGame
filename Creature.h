@@ -35,8 +35,8 @@ public:
 	void setIsDead(bool state)     { m_isDead = state; };
 
 	//Battle related methods
-	void takeDamage   (int value);
-	void receiveHeal  (int value);
+	int takeDamage   (int value);
+	int receiveHeal  (int value);
 	void addExperience(int value);
 	void startDefending();
 

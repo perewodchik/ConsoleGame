@@ -111,14 +111,21 @@ void Battlefield::run()
 					<< " at position " << creature->getPosition()
 					<< " has died\n";
 				creature->setIsDead(true);
+				m_players[currentCreature->getTeam() - 1]->addExp(creature->getKillExp());
+				std::cout << m_players[currentCreature->getTeam() - 1]->getName()
+					<< " has received " << creature->getKillExp() << " experience\n";
 			}
 		}
 		m_creaturesOrder.push_back(currentCreature);
+		m_creaturesOrder.erase(m_creaturesOrder.begin());
 		
 		system("pause");
 		system("cls");
 	}
-	std::cout << m_players[m_findWinner()-1]->getName() << ", you have won!";
-	int a;
-	std::cin >> a;
+	std::cout << m_players[m_findWinner()-1]->getName() << ", you have won!\n";
+	for (int i = 0; i < m_players.size(); i++)
+	{
+		std::cout << m_players[i]->getName() << " currently has "
+			<< m_players[i]->getExp() << " experience\n";
+	}
 }

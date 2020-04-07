@@ -1,6 +1,7 @@
 #pragma once
 #include <Creature.h>
-#include <Attack.h>
+#include <RangedAttack.h>
+
 class Archer : public Creature
 {
 public:

@@ -39,7 +39,7 @@ std::vector<std::shared_ptr<Creature> > TargetController::showAvailableCreatures
 	return creatures;
 }
 
-std::shared_ptr<Creature> TargetController::getSingleEnemyTarget(const Position& pos)
+std::shared_ptr<Creature> TargetController::getSingleTarget(const Position& pos, bool friendly)
 {
 	if (m_map == nullptr)
 	{
@@ -47,7 +47,7 @@ std::shared_ptr<Creature> TargetController::getSingleEnemyTarget(const Position&
 		return nullptr;
 	}
 
-	auto AvailableCreatures = this->showAvailableCreatures(pos, false);
+	auto AvailableCreatures = this->showAvailableCreatures(pos, friendly);
 	if (AvailableCreatures.size() == 0)
 	{
 		std::cout << "No available creatures\n";
@@ -138,13 +138,23 @@ std::shared_ptr<Creature> TargetController::getSingleEnemyTargetMelee(const Posi
 
 			for (int j = 0; j < BATTLEFIELD_WIDTH; j++)
 			{
-				auto targetCreature = m_map->getCreatureByCoordinates(2, j);
+				auto targetCreature = m_map->getCreatureByCoordinates(i, j);
 				if (creature->getTeam() != targetCreature->getTeam())
 				{
 					if (!targetCreature->isDead())
 					{
 						isAllRowDead = false;
 						AvailableCreatures.push_back(targetCreature);
+
+						std::cout << "#" << counter + 1 << ". "
+							<< targetCreature->getName() << " "
+							<< targetCreature->getPosition() << " "
+							<< targetCreature->getHealth() << " HP,"
+							<< targetCreature->getArmor() << " ARMOR";
+						if (targetCreature->getIsDefending())
+							std::cout << ", DEFENDING";
+						std::cout << "\n";
+						counter++;
 					}
 				}
 			}

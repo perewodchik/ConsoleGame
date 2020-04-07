@@ -1,6 +1,7 @@
 #include <Game.h>
 #include <Initializer.h>
 #include <Battlefield.h>
+#include <UpgradeMenu.h>
 
 Game::Game() {
 	m_isRunning = true;
@@ -20,7 +21,7 @@ void Game::run() {
 			case INIT:
 			{
 				Initializer initializer(m_players, m_targetController);
-				initializer.Initialize();
+				initializer.run();
 				m_curState = BATTLE;
 				break;
 			}
@@ -28,6 +29,13 @@ void Game::run() {
 			{
 				Battlefield battlefield(m_players, m_targetController);
 				battlefield.run();
+				m_curState = UPGRADE;
+				break;
+			}
+			case UPGRADE:
+			{
+				UpgradeMenu upgradeMenu(m_players, m_targetController);
+				upgradeMenu.run();
 				break;
 			}
 		}

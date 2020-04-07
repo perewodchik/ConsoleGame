@@ -59,10 +59,16 @@
     <ClCompile Include="TargetController.cpp">
       <Filter>Misc</Filter>
     </ClCompile>
-    <ClCompile Include="Attack.cpp">
+    <ClCompile Include="Defend.cpp">
       <Filter>Skills</Filter>
     </ClCompile>
-    <ClCompile Include="Defend.cpp">
+    <ClCompile Include="UpgradeMenu.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="RangedAttack.cpp">
+      <Filter>Skills</Filter>
+    </ClCompile>
+    <ClCompile Include="MeleeAttack.cpp">
       <Filter>Skills</Filter>
     </ClCompile>
   </ItemGroup>
@@ -109,10 +115,16 @@
     <ClInclude Include="TargetController.h">
       <Filter>Misc</Filter>
     </ClInclude>
-    <ClInclude Include="Attack.h">
+    <ClInclude Include="Defend.h">
       <Filter>Skills</Filter>
     </ClInclude>
-    <ClInclude Include="Defend.h">
+    <ClInclude Include="UpgradeMenu.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="RangedAttack.h">
+      <Filter>Skills</Filter>
+    </ClInclude>
+    <ClInclude Include="MeleeAttack.h">
       <Filter>Skills</Filter>
     </ClInclude>
   </ItemGroup>

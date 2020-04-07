@@ -11,7 +11,7 @@ Initializer::Initializer(std::vector<std::unique_ptr<Player> >& players,
 	m_targetController = targetController;
 }
 
-void Initializer::Initialize() {
+void Initializer::run() {
 	std::cout << "Welcome to the game!\n";
 	std::string strInput;
 	for (int i = 0; i < MAX_PLAYERS; i++)

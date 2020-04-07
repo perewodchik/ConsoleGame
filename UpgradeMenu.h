@@ -4,10 +4,10 @@
 #include <TargetController.h>
 #include <Windows.h>
 
-class Initializer
+class UpgradeMenu
 {
 public:
-	Initializer(std::vector<std::unique_ptr<Player> >& players,
+	UpgradeMenu(std::vector < std::unique_ptr<Player> >& players,
 		TargetController* targetController);
 	void run();
 private:

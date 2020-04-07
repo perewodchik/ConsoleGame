@@ -156,7 +156,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Archer.cpp" />
-    <ClCompile Include="Attack.cpp" />
+    <ClCompile Include="MeleeAttack.cpp" />
     <ClCompile Include="Battlefield.cpp" />
     <ClCompile Include="ConsoleGame.cpp" />
     <ClCompile Include="Creature.cpp" />
@@ -167,12 +167,14 @@
     <ClCompile Include="Peasant.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Position.cpp" />
+    <ClCompile Include="RangedAttack.cpp" />
     <ClCompile Include="Skill.cpp" />
     <ClCompile Include="TargetController.cpp" />
+    <ClCompile Include="UpgradeMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Archer.h" />
-    <ClInclude Include="Attack.h" />
+    <ClInclude Include="MeleeAttack.h" />
     <ClInclude Include="Battlefield.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="Creature.h" />
@@ -185,8 +187,10 @@
     <ClInclude Include="Peasant.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Position.h" />
+    <ClInclude Include="RangedAttack.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="TargetController.h" />
+    <ClInclude Include="UpgradeMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Game_rules.txt" />

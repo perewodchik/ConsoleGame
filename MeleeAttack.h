@@ -2,10 +2,12 @@
 #include <Skill.h>
 #include <Creature.h>
 
-class Attack : public Skill
+class MeleeAttack : public Skill
 {
 public:
-	Attack();
+	MeleeAttack(int damage);
 	virtual void emit();
+private:
+	int m_damage;
 };
 
