@@ -1,6 +1,6 @@
 #pragma once
-#include <Creature.h>
-#include <MeleeAttack.h>
+#include <Creatures/Creature.h>
+#include <Skills/MeleeAttack.h>
 
 class Peasant : public Creature
 {

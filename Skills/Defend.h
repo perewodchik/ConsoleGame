@@ -1,5 +1,5 @@
 #pragma once
-#include <Skill.h>
+#include <Skills/Skill.h>
 class Defend : public Skill
 {
 public:

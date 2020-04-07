@@ -1,6 +1,6 @@
 #pragma once
-#include <ITargetHelper.h>
-#include <Map.h>
+#include <Misc/ITargetHelper.h>
+#include <Misc/Map.h>
 class TargetController : public ITargetHelper
 {
 public:

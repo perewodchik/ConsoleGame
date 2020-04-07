@@ -1,6 +1,8 @@
 #pragma once
-#include <ITargetHelper.h>
-#include <IUser.h>
+#include <Misc/ITargetHelper.h>
+#include <Misc/IUser.h>
+#include <string>
+#include <memory>
 
 class Skill
 {

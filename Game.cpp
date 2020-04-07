@@ -1,7 +1,7 @@
 #include <Game.h>
-#include <Initializer.h>
-#include <Battlefield.h>
-#include <UpgradeMenu.h>
+#include <States/Initializer.h>
+#include <States/Battlefield.h>
+#include <States/UpgradeMenu.h>
 
 Game::Game() {
 	m_isRunning = true;

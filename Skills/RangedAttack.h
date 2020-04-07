@@ -1,5 +1,6 @@
 #pragma once
-#include "Skill.h"
+#include <Skills/Skill.h>
+
 class RangedAttack : public Skill
 {
 public:

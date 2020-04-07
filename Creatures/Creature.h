@@ -1,9 +1,9 @@
 #pragma once
 #include <vector>
-#include <Position.h>
+#include <Misc/Position.h>
 #include <memory>
-#include <IUser.h>
-#include <Skill.h>
+#include <Misc/IUser.h>
+#include <Skills/Skill.h>
 class Creature : public IUser
 {
 public:

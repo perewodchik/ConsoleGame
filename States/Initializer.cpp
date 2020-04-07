@@ -1,12 +1,13 @@
-#include "Initializer.h"
+#include <States/Initializer.h>
 #include <Config.h>
-#include <Peasant.h>
-#include <Archer.h>
+#include <Creatures/Peasant.h>
+#include <Creatures/Apprentice.h>
+#include <Creatures/Assassin.h>
 #include <string>
 
 Initializer::Initializer(std::vector<std::unique_ptr<Player> >& players,
-	TargetController* targetController):
-	m_players(players)
+	TargetController* targetController)
+	:m_players(players)
 {
 	m_targetController = targetController;
 }
@@ -22,14 +23,14 @@ void Initializer::run() {
 
 		system("cls");
 
-		std::cout << strInput << ", choose your characters:\n"
-			<< "+---+---------+----+-------+---------+----------+------------+\n"
-			<< "| # |  CLASS  | HP | ARMOR | MAX_EXP | EXP_KILL | INITIATIVE |\n"
-			<< "+---+---------+----+-------+---------+----------+------------+\n"
-			<< "| 1 | PEASANT | 25 |   0   |    30   |    10    |     0      |\n"
-			<< "| 2 |  ARCHER | 50 |   0   |   100   |    40    |    70      |\n"
-			<< "| 3 |  NARUTO | 80 |  20   |    60   |    80    |    75      |\n"
-			<< "+---+---------+----+-------+---------+----------+------------+\n";
+		std::cout << strInput << ", choose your characters:\n\n"
+			<< "+---+------------+----+-------+-------------+-----------------+------------+\n"
+			<< "| # |    CLASS   | HP | ARMOR | EXP_UPGRADE | EXP_WHEN_KILLED | INITIATIVE |\n"
+			<< "+---+------------+----+-------+-------------+-----------------+------------+\n"
+			<< "| 1 |    PEASANT | 45 |  10   |      40     |        15       |     15     |\n"
+			<< "| 2 |   ASSASSIN | 35 |   0   |      50     |        40       |     35     |\n"
+			<< "| 3 | APPRENTICE | 50 |   0   |      30     |        25       |     10     |\n"
+			<< "+---+------------+----+-------+-------------+-----------------+------------+\n";
 		
 		int characters_selected = 0;
 		int numInput;
@@ -45,20 +46,23 @@ void Initializer::run() {
 				characters_selected++;
 				break;
 			case 2:
-				std::cout << "You have added archer\n";
-				m_players[i]->addCreature(std::make_shared<Archer>());
+				std::cout << "You have added assassin\n";
+				m_players[i]->addCreature(std::make_shared<Assassin>());
 				characters_selected++;
 				break;
+			case 3:
+				std::cout << "You have added apprentice\n";
+				m_players[i]->addCreature(std::make_shared<Apprentice>());
+				characters_selected++;
+				break;
+
 			default:
 				std::cout << "There is no such character. Please try again\n";
 				break;
 			}
 			
 		}
-
-		m_players[i]->addExp(40);
 		
-
 		//Helper loop for setting up necessary things
 		for (auto creature : m_players[i]->getCreatures())
 		{
@@ -69,7 +73,6 @@ void Initializer::run() {
 				skill->setUser(creature);
 			}
 		}
-
 
 		system("pause");
 		system("cls");

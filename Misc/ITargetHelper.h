@@ -1,12 +1,12 @@
 #pragma once
-#include <Position.h>
+#include <Misc/Position.h>
 
 class Creature;
 
 class ITargetHelper
 {
 public:
-	enum type { friendly = 0, enemy = 1 };
+	enum type { enemy = 0, friendly = 1 };
 
 	virtual std::shared_ptr<Creature> getSingleTarget(const Position& pos, bool friendly) = 0;
 	virtual std::shared_ptr<Creature> getSingleEnemyTargetMelee(const Position& pos) = 0;

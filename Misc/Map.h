@@ -14,7 +14,6 @@ public:
 	std::vector<std::shared_ptr<Creature> > getCreatureVector();
 
 	void drawMap();
-	void removeFromMap(const Position& pos);
 private:
 	std::vector<std::vector<std::shared_ptr<Creature> > > m_map;
 	std::vector<std::unique_ptr<Player> >& m_players;

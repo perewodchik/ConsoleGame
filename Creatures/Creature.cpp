@@ -1,5 +1,5 @@
-#include <Creature.h>
-#include <Defend.h>
+#include <Creatures/Creature.h>
+#include <Skills/Defend.h>
 
 Creature::Creature(int hp, int armor, int initiative, int maxExp, int killExp, std::string name, char tag)
 {

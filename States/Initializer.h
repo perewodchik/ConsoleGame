@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <Player.h>
-#include <TargetController.h>
+#include <Misc/TargetController.h>
 #include <Windows.h>
 
 class Initializer

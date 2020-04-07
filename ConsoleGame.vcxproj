@@ -155,42 +155,47 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Archer.cpp" />
-    <ClCompile Include="MeleeAttack.cpp" />
-    <ClCompile Include="Battlefield.cpp" />
+    <ClCompile Include="Creatures\Assassin.cpp" />
+    <ClCompile Include="Creatures\Apprentice.cpp" />
+    <ClCompile Include="Creatures\Archer.cpp" />
+    <ClCompile Include="Skills\Heal.cpp" />
+    <ClCompile Include="Skills\MeleeAttack.cpp" />
+    <ClCompile Include="States\Battlefield.cpp" />
     <ClCompile Include="ConsoleGame.cpp" />
-    <ClCompile Include="Creature.cpp" />
-    <ClCompile Include="Defend.cpp" />
+    <ClCompile Include="Creatures\Creature.cpp" />
+    <ClCompile Include="Skills\Defend.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Initializer.cpp" />
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="Peasant.cpp" />
+    <ClCompile Include="States\Initializer.cpp" />
+    <ClCompile Include="Misc\Map.cpp" />
+    <ClCompile Include="Creatures\Peasant.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Position.cpp" />
-    <ClCompile Include="RangedAttack.cpp" />
-    <ClCompile Include="Skill.cpp" />
-    <ClCompile Include="TargetController.cpp" />
-    <ClCompile Include="UpgradeMenu.cpp" />
+    <ClCompile Include="Skills\RangedAttack.cpp" />
+    <ClCompile Include="Skills\Skill.cpp" />
+    <ClCompile Include="Misc\TargetController.cpp" />
+    <ClCompile Include="States\UpgradeMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Archer.h" />
-    <ClInclude Include="MeleeAttack.h" />
-    <ClInclude Include="Battlefield.h" />
+    <ClInclude Include="Creatures\Assassin.h" />
+    <ClInclude Include="Creatures\Apprentice.h" />
+    <ClInclude Include="Creatures\Archer.h" />
+    <ClInclude Include="Skills\Heal.h" />
+    <ClInclude Include="Skills\MeleeAttack.h" />
+    <ClInclude Include="States\Battlefield.h" />
     <ClInclude Include="Config.h" />
-    <ClInclude Include="Creature.h" />
-    <ClInclude Include="Defend.h" />
+    <ClInclude Include="Creatures\Creature.h" />
+    <ClInclude Include="Skills\Defend.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Initializer.h" />
-    <ClInclude Include="ITargetHelper.h" />
-    <ClInclude Include="IUser.h" />
-    <ClInclude Include="Map.h" />
-    <ClInclude Include="Peasant.h" />
+    <ClInclude Include="States\Initializer.h" />
+    <ClInclude Include="Misc\ITargetHelper.h" />
+    <ClInclude Include="Misc\IUser.h" />
+    <ClInclude Include="Misc\Map.h" />
+    <ClInclude Include="Creatures\Peasant.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="Position.h" />
-    <ClInclude Include="RangedAttack.h" />
-    <ClInclude Include="Skill.h" />
-    <ClInclude Include="TargetController.h" />
-    <ClInclude Include="UpgradeMenu.h" />
+    <ClInclude Include="Misc\Position.h" />
+    <ClInclude Include="Skills\RangedAttack.h" />
+    <ClInclude Include="Skills\Skill.h" />
+    <ClInclude Include="Misc\TargetController.h" />
+    <ClInclude Include="States\UpgradeMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Game_rules.txt" />

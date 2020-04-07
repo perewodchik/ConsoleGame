@@ -1,11 +1,11 @@
-#include <TargetController.h>
+#include <Misc/TargetController.h>
 
 TargetController::TargetController()
 {
 	m_map = nullptr;
 }
 
-std::vector<std::shared_ptr<Creature> > TargetController::showAvailableCreatures(const Position& pos, bool friendly)
+std::vector<std::shared_ptr<Creature> > TargetController::showAvailableCreatures(const Position& pos, bool type)
 {
 	if (m_map == nullptr)
 	{
@@ -19,7 +19,15 @@ std::vector<std::shared_ptr<Creature> > TargetController::showAvailableCreatures
 		if (creature == nullptr || creature->isDead())
 			continue;
 
-		if (friendly ^ (m_map->getCreatureByPosition(pos)->getTeam() != creature->getTeam()))
+		//if type is friendly, i.e type = 1, then it switches to friendly creatures
+		//else if type = 0, then looks for enemy creatures
+
+		
+
+		if ( type == enemy && 
+			m_map->getCreatureByPosition(pos)->getTeam() != creature->getTeam() 
+		|| type == friendly &&
+			m_map->getCreatureByPosition(pos)->getTeam() == creature->getTeam())
 		{
 			std::cout << "#" << counter << ". "
 				<< creature->getName() << " "
@@ -51,6 +59,7 @@ std::shared_ptr<Creature> TargetController::getSingleTarget(const Position& pos,
 		std::cout << "No available creatures\n";
 		return nullptr;
 	}
+
 	int choice = -1;
 	std::cin >> choice;
 	while (choice <= 0 || choice > AvailableCreatures.size() + 1)
@@ -58,6 +67,7 @@ std::shared_ptr<Creature> TargetController::getSingleTarget(const Position& pos,
 		std::cout << "Incorrect value. Please type a creature from 1 to " << AvailableCreatures.size() + 1 << "\n";
 		std::cin >> choice;
 	}
+
 	return AvailableCreatures[choice - 1];
 }
 

@@ -26,3 +26,8 @@ void Player::spendExp(int value)
 {
 	m_exp -= value;
 }
+
+void Player::setName(std::string name)
+{
+	m_name = name;
+}

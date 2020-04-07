@@ -1,4 +1,4 @@
-#include <Skill.h>
+#include <Skills/Skill.h>
 
 Skill::Skill(std::string spellName)
 {

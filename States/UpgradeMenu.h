@@ -2,8 +2,8 @@
 #include <Windows.h>
 #include <vector>
 #include <Player.h>
-#include <TargetController.h>
-#include <Archer.h>
+#include <Misc/TargetController.h>
+#include <Creatures/Archer.h>
 
 class UpgradeMenu
 {

@@ -32,44 +32,50 @@
     <ClCompile Include="Player.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Skill.cpp">
+    <ClCompile Include="Skills\Skill.cpp">
       <Filter>Skills</Filter>
     </ClCompile>
-    <ClCompile Include="Peasant.cpp">
+    <ClCompile Include="Skills\RangedAttack.cpp">
+      <Filter>Skills</Filter>
+    </ClCompile>
+    <ClCompile Include="Skills\MeleeAttack.cpp">
+      <Filter>Skills</Filter>
+    </ClCompile>
+    <ClCompile Include="Creatures\Archer.cpp">
       <Filter>Creatures</Filter>
     </ClCompile>
-    <ClCompile Include="Creature.cpp">
+    <ClCompile Include="Creatures\Peasant.cpp">
       <Filter>Creatures</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
+    <ClCompile Include="Creatures\Creature.cpp">
+      <Filter>Creatures</Filter>
+    </ClCompile>
+    <ClCompile Include="States\Initializer.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="States\UpgradeMenu.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="States\Battlefield.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="Skills\Defend.cpp">
+      <Filter>Skills</Filter>
+    </ClCompile>
+    <ClCompile Include="Misc\TargetController.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="Misc\Map.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Archer.cpp">
-      <Filter>Creatures</Filter>
+    <ClCompile Include="Creatures\Apprentice.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Battlefield.cpp">
-      <Filter>States</Filter>
+    <ClCompile Include="Skills\Heal.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Initializer.cpp">
-      <Filter>States</Filter>
-    </ClCompile>
-    <ClCompile Include="Position.cpp">
-      <Filter>Misc</Filter>
-    </ClCompile>
-    <ClCompile Include="TargetController.cpp">
-      <Filter>Misc</Filter>
-    </ClCompile>
-    <ClCompile Include="Defend.cpp">
-      <Filter>Skills</Filter>
-    </ClCompile>
-    <ClCompile Include="UpgradeMenu.cpp">
-      <Filter>States</Filter>
-    </ClCompile>
-    <ClCompile Include="RangedAttack.cpp">
-      <Filter>Skills</Filter>
-    </ClCompile>
-    <ClCompile Include="MeleeAttack.cpp">
-      <Filter>Skills</Filter>
+    <ClCompile Include="Creatures\Assassin.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -82,50 +88,59 @@
     <ClInclude Include="Config.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Map.h">
+    <ClInclude Include="Skills\Skill.h">
+      <Filter>Skills</Filter>
+    </ClInclude>
+    <ClInclude Include="Skills\RangedAttack.h">
+      <Filter>Skills</Filter>
+    </ClInclude>
+    <ClInclude Include="Skills\MeleeAttack.h">
+      <Filter>Skills</Filter>
+    </ClInclude>
+    <ClInclude Include="Creatures\Archer.h">
+      <Filter>Creatures</Filter>
+    </ClInclude>
+    <ClInclude Include="Creatures\Peasant.h">
+      <Filter>Creatures</Filter>
+    </ClInclude>
+    <ClInclude Include="Creatures\Creature.h">
+      <Filter>Creatures</Filter>
+    </ClInclude>
+    <ClInclude Include="States\Initializer.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="States\UpgradeMenu.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="Skills\Defend.h">
+      <Filter>Skills</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\TargetController.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\Position.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\Map.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Skill.h">
-      <Filter>Skills</Filter>
+    <ClInclude Include="Misc\ITargetHelper.h">
+      <Filter>Misc</Filter>
     </ClInclude>
-    <ClInclude Include="Archer.h">
-      <Filter>Creatures</Filter>
-    </ClInclude>
-    <ClInclude Include="Creature.h">
-      <Filter>Creatures</Filter>
-    </ClInclude>
-    <ClInclude Include="Peasant.h">
-      <Filter>Creatures</Filter>
-    </ClInclude>
-    <ClInclude Include="Initializer.h">
+    <ClInclude Include="States\Battlefield.h">
       <Filter>States</Filter>
     </ClInclude>
-    <ClInclude Include="Battlefield.h">
-      <Filter>States</Filter>
-    </ClInclude>
-    <ClInclude Include="Position.h">
+    <ClInclude Include="Misc\IUser.h">
       <Filter>Misc</Filter>
     </ClInclude>
-    <ClInclude Include="ITargetHelper.h">
-      <Filter>Misc</Filter>
+    <ClInclude Include="Creatures\Apprentice.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="IUser.h">
-      <Filter>Misc</Filter>
+    <ClInclude Include="Skills\Heal.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="TargetController.h">
-      <Filter>Misc</Filter>
-    </ClInclude>
-    <ClInclude Include="Defend.h">
-      <Filter>Skills</Filter>
-    </ClInclude>
-    <ClInclude Include="UpgradeMenu.h">
-      <Filter>States</Filter>
-    </ClInclude>
-    <ClInclude Include="RangedAttack.h">
-      <Filter>Skills</Filter>
-    </ClInclude>
-    <ClInclude Include="MeleeAttack.h">
-      <Filter>Skills</Filter>
+    <ClInclude Include="Creatures\Assassin.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

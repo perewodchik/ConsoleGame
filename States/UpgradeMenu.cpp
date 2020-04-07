@@ -1,4 +1,4 @@
-#include <UpgradeMenu.h>
+#include <States/UpgradeMenu.h>
 
 UpgradeMenu::UpgradeMenu(std::vector< std::unique_ptr<Player> >& players,
 	TargetController* targetController) :m_players(players)

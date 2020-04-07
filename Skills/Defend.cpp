@@ -1,5 +1,5 @@
-#include <Defend.h>
-#include <Creature.h>
+#include <Skills/Defend.h>
+#include <Creatures/Creature.h>
 
 Defend::Defend() : Skill("Defend")
 {

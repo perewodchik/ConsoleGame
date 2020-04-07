@@ -1,5 +1,5 @@
-#include <RangedAttack.h>
-#include <Creature.h>
+#include <Skills/RangedAttack.h>
+#include <Creatures/Creature.h>
 
 RangedAttack::RangedAttack(int damage) : Skill("Ranged Attack")
 {
@@ -10,7 +10,7 @@ void RangedAttack::emit()
 {
 	auto user = m_user.lock();
 	auto enemyTarget = m_targetHelper->getSingleTarget(
-		user->getPosition(),  ITargetHelper::friendly);
+		user->getPosition(),  ITargetHelper::enemy);
 	int dmgTaken = enemyTarget->takeDamage(m_damage);
 	std::cout << "enemy took " << dmgTaken << " damage\n";
 }

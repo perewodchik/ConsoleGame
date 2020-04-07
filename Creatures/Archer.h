@@ -1,6 +1,6 @@
 #pragma once
-#include <Creature.h>
-#include <RangedAttack.h>
+#include <Creatures/Creature.h>
+#include <Skills/RangedAttack.h>
 
 class Archer : public Creature
 {

@@ -1,5 +1,5 @@
-#include <Battlefield.h>
-#include <TargetController.h>
+#include <States/Battlefield.h>
+#include <Misc/TargetController.h>
 
 Battlefield::Battlefield(std::vector<std::unique_ptr<Player> >& players, TargetController* targetController)
 	:m_players(players)
@@ -7,6 +7,7 @@ Battlefield::Battlefield(std::vector<std::unique_ptr<Player> >& players, TargetC
 	m_map = new Map(m_players);
 	targetController->setMap(m_map);
 
+	//Sorting by initiative
 	m_creaturesOrder = m_map->getCreatureVector();
 	std::sort(m_creaturesOrder.begin(), m_creaturesOrder.end(),
 		[](const std::shared_ptr<Creature>& a,
@@ -15,6 +16,7 @@ Battlefield::Battlefield(std::vector<std::unique_ptr<Player> >& players, TargetC
 			return a->getInitiative() > b->getInitiative();
 		});
 
+	//Setting creature to battling state
 	for (auto creature : m_creaturesOrder)
 	{
 		if (creature->isDead())
@@ -59,8 +61,6 @@ void Battlefield::run()
 {
 	while (!m_findWinner())
 	{
-
-		m_map->drawMap();
 		std::cout << "Order: ";
 		for (auto creature : m_creaturesOrder)
 		{
@@ -68,10 +68,11 @@ void Battlefield::run()
 				continue;
 			std::cout << creature->getTag() << " ";
 		}
-			
+		std::cout << "\n";
+		m_map->drawMap();
 		std::cout << "\n\n";
 
-		
+		//Finding first alive creature to take turn
 		int iDeadCheck = 0;
 		auto currentCreature = m_creaturesOrder[iDeadCheck];
 		while (currentCreature->isDead() == true) {
@@ -103,19 +104,26 @@ void Battlefield::run()
 		int numInput;
 		std::cin >> numInput;
 		while (numInput < 0 || numInput > skills.size())
+		{
 			std::cout << "Please select the correct action\n";
-		
+			std::cin >> numInput;
+		}
+			
 		if (numInput == 0)
 		{
 			std::cout << "You have chosen adv map, but it doesn't work yet\n";
 			continue;
 		}
 		
-
 		system("cls");
+
+		//Entering skill casting menu
 		m_map->drawMap();
 		skills[numInput-1]->emit();
 
+		//Handling after-spell state
+		//i.e checking for dead people,
+		//changing turn order
 		for (int i = 0; i < m_creaturesOrder.size(); i++)
 		{
 			auto creature = m_creaturesOrder[i];
@@ -140,7 +148,7 @@ void Battlefield::run()
 		system("cls");
 	}
 
-	std::cout << m_players[m_findWinner()-1]->getName() << ", you have won!\n";
+	std::cout << m_players[m_findWinner()-1]->getName() << " has won the round!\n";
 	for (int i = 0; i < m_players.size(); i++)
 	{
 		std::cout << m_players[i]->getName() << " currently has "
