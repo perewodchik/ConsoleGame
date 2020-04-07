@@ -3,8 +3,8 @@
 
 Creature::Creature(int hp, int armor, int initiative, int maxExp, int killExp, std::string name, char tag)
 {
+	m_canBeUpgraded = true;
 	m_isDefending = false;
-	m_curExp = 0;
 	m_health = hp;
 	m_maxHealth = hp;
 	m_armor = armor;
@@ -35,15 +35,6 @@ int Creature::takeDamage(int value)
 	value *= 1 - m_armor / 100.0;
 	m_health -= value;
 	return curHealth - m_health;
-}
-
-void Creature::addExperience(int value)
-{
-	m_curExp += value;
-	if (m_curExp > m_maxExp)
-	{
-		m_curExp = m_maxExp;
-	}
 }
 
 void Creature::startDefending()

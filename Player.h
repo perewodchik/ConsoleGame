@@ -15,6 +15,7 @@ public:
 	void setName(std::string name) { m_name = name; };
 	void addCreature(std::shared_ptr<Creature> creature_sptr);
 	std::vector<std::shared_ptr<Creature> > getCreatures() { return m_creatures; };
+	std::vector<std::shared_ptr<Creature> >& getCreaturesReference(){ return m_creatures; };
 private:
 	std::string m_name;
 	std::vector<std::shared_ptr<Creature> > m_creatures;

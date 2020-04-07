@@ -16,16 +16,17 @@ public:
 	Position getPosition() { return m_position; };
 
 	//Creature getter methods
-	int  getHealth     () const { return m_health;      };
-	int  getMaxHealth  () const { return m_maxHealth;   };
-	int  getArmor      () const { return m_armor;       };
-	int  getExp        () const { return m_curExp;      };
-	int  getKillExp    () const { return m_killExp;     };
-	int  getInitiative () const { return m_initiative;  };
-	int isDead      () const { return m_isDead;      };
-	bool getIsDefending() const { return m_isDefending; };
-	char getTag        () const { return m_tag;         };
-	std::string getName() const { return m_name;        };
+	int  getHealth     () const { return m_health;       };
+	int  getMaxHealth  () const { return m_maxHealth;    };
+	int  getArmor      () const { return m_armor;        };
+	int  getMaxExp     () const { return m_maxExp;       };
+	int  getKillExp    () const { return m_killExp;      };
+	int  getInitiative () const { return m_initiative;   };
+	bool getIsDefending() const { return m_isDefending;  };
+	char getTag        () const { return m_tag;          };
+	std::string getName() const { return m_name;         };
+	int  isDead        () const { return m_isDead;       };
+	bool canBeUpgraded () const { return m_canBeUpgraded;};
 
 	std::vector<std::shared_ptr<Skill> > getSkills() { return m_skills; };
 
@@ -37,7 +38,6 @@ public:
 	//Battle related methods
 	int takeDamage   (int value);
 	int receiveHeal  (int value);
-	void addExperience(int value);
 	void startDefending();
 
 private:
@@ -46,7 +46,6 @@ private:
 	int  m_maxHealth;
 	int  m_armor;
 	int  m_initiative;
-	int  m_curExp;
 	int  m_maxExp;
 	int  m_killExp;
 	int  m_team;
@@ -55,6 +54,7 @@ private:
 	std::string m_name;
 	Position m_position;
 protected:
+	bool m_canBeUpgraded;
 	std::vector<std::shared_ptr<Skill> > m_skills;
 };
 

@@ -14,7 +14,6 @@ std::vector<std::shared_ptr<Creature> > TargetController::showAvailableCreatures
 	}
 	int counter = 1;
 	std::vector<std::shared_ptr<Creature> > creatures;
-	std::cout << "+---+------------+---------------+----------+\n";
 	for (auto creature : m_map->getCreatureVector())
 	{
 		if (creature == nullptr || creature->isDead())
@@ -35,7 +34,6 @@ std::vector<std::shared_ptr<Creature> > TargetController::showAvailableCreatures
 			counter++;
 		}
 	}
-	std::cout << "+---+------------+---------------+----------+\n";
 	return creatures;
 }
 

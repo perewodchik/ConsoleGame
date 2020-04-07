@@ -55,7 +55,11 @@ void Initializer::run() {
 			}
 			
 		}
+
+		m_players[i]->addExp(40);
 		
+
+		//Helper loop for setting up necessary things
 		for (auto creature : m_players[i]->getCreatures())
 		{
 			creature->setTeam(i+1);
@@ -65,6 +69,8 @@ void Initializer::run() {
 				skill->setUser(creature);
 			}
 		}
+
+
 		system("pause");
 		system("cls");
 	}

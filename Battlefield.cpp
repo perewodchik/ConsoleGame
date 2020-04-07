@@ -15,6 +15,15 @@ Battlefield::Battlefield(std::vector<std::unique_ptr<Player> >& players, TargetC
 			return a->getInitiative() > b->getInitiative();
 		});
 
+	for (auto creature : m_creaturesOrder)
+	{
+		if (creature->isDead())
+		{
+			creature->setIsDead(false);
+		}
+		creature->receiveHeal(creature->getMaxHealth());
+	}
+
 	std::cout << "Starting the battle!\n";
 }
 
@@ -22,6 +31,11 @@ int Battlefield::m_findWinner()
 {
 	int winner = 0;
 	bool flag = false;
+
+	//In case of draw, player 1 still wins
+	if (m_creaturesOrder.size() == 0)
+		return 1;
+
 	for (auto creature : m_creaturesOrder)
 	{
 
@@ -107,25 +121,32 @@ void Battlefield::run()
 			auto creature = m_creaturesOrder[i];
 			if (creature->getHealth() <= 0 && !creature->isDead())
 			{
-				std::cout << creature->getName()
+				std::cout 
+					<< creature->getName()
 					<< " at position " << creature->getPosition()
 					<< " has died\n";
 				creature->setIsDead(true);
+
 				m_players[currentCreature->getTeam() - 1]->addExp(creature->getKillExp());
-				std::cout << m_players[currentCreature->getTeam() - 1]->getName()
+				std::cout 
+					<< m_players[currentCreature->getTeam() - 1]->getName()
 					<< " has received " << creature->getKillExp() << " experience\n";
 			}
 		}
 		m_creaturesOrder.push_back(currentCreature);
-		m_creaturesOrder.erase(m_creaturesOrder.begin());
+		m_creaturesOrder.erase(m_creaturesOrder.begin()+iDeadCheck);
 		
 		system("pause");
 		system("cls");
 	}
+
 	std::cout << m_players[m_findWinner()-1]->getName() << ", you have won!\n";
 	for (int i = 0; i < m_players.size(); i++)
 	{
 		std::cout << m_players[i]->getName() << " currently has "
 			<< m_players[i]->getExp() << " experience\n";
 	}
+	
+	std::cout << "\n";
+	system("pause");
 }

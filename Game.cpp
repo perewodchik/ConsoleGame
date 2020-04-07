@@ -36,6 +36,7 @@ void Game::run() {
 			{
 				UpgradeMenu upgradeMenu(m_players, m_targetController);
 				upgradeMenu.run();
+				m_curState = BATTLE;
 				break;
 			}
 		}

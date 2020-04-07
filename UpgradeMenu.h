@@ -1,8 +1,9 @@
 #pragma once
+#include <Windows.h>
 #include <vector>
 #include <Player.h>
 #include <TargetController.h>
-#include <Windows.h>
+#include <Archer.h>
 
 class UpgradeMenu
 {
@@ -13,5 +14,7 @@ public:
 private:
 	std::vector < std::unique_ptr<Player> >& m_players;
 	TargetController* m_targetController;
+	void upgradePlayerCreatures(std::unique_ptr<Player>& player);
+	int upgradeCreature(std::shared_ptr<Creature>& creature, int availableExp);
 };
 
