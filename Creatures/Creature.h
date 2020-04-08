@@ -8,9 +8,15 @@ class Creature : public IUser
 {
 public:
 	Creature(int health, int armor, int initiative, 
-		int maxExp, int killExp, std::string name, char tag);
+		int maxExp, int killExp, std::string name);
 	~Creature() = default;
 
+	enum class CLASS {
+		Apprentice, Assassin, Peasant,
+		Archer, Knight, Priest, Shinobi, Spirit, Warlock,
+		Anduin, Naruto, Hanzo, Paladin
+	};
+	
 	//IUser inherited methods
 	int      getTeam() { return m_team; };
 	Position getPosition() { return m_position; };
@@ -25,8 +31,10 @@ public:
 	bool getIsDefending() const { return m_isDefending;  };
 	char getTag        () const { return m_tag;          };
 	std::string getName() const { return m_name;         };
-	int  isDead        () const { return m_isDead;       };
-	bool canBeUpgraded () const { return m_canBeUpgraded;};
+	int  isDead        () const { return m_isDead;		 };
+	int  getEvasion    () const { return m_evasion;      };
+
+	std::vector<CLASS>  getUpgrades() const { return m_upgrades;};
 
 	std::vector<std::shared_ptr<Skill> > getSkills() { return m_skills; };
 
@@ -38,7 +46,11 @@ public:
 	//Battle related methods
 	int takeDamage   (int value);
 	int receiveHeal  (int value);
+	int receiveArmor (int value);
 	void startDefending();
+	void stopDefending();
+
+	
 
 private:
 	bool m_isDefending;
@@ -51,10 +63,12 @@ private:
 	int  m_team;
 	char m_tag;
 	int m_isDead;
+	
 	std::string m_name;
 	Position m_position;
 protected:
-	bool m_canBeUpgraded;
+	int m_evasion;
+	std::vector<CLASS> m_upgrades;
 	std::vector<std::shared_ptr<Skill> > m_skills;
 };
 

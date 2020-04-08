@@ -20,8 +20,8 @@ void UpgradeMenu::run()
 				canUpgrade = true;
 				std::cout << m_players[i]->getName()
 					<< ", you have available upgrades!"
-					<< "Do you want to proceed?\n"
-					<< "[1]. Yes\n[2]. No\n";
+					<< " Do you want to proceed?\n\n"
+					<< "<1>. Upgrade\n<2>. Skip\n\n";
 
 				int intInput;
 				std::cin >> intInput;
@@ -66,7 +66,7 @@ void UpgradeMenu::upgradePlayerCreatures(std::unique_ptr<Player>& player)
 		std::vector<std::reference_wrapper<std::shared_ptr<Creature> > > upgradableCreatures;
 		for (auto& creature : playerCreatures)
 		{
-			if ((creature->getMaxExp() <= player->getExp()) && creature->canBeUpgraded())
+			if ((creature->getMaxExp() <= player->getExp()) && creature->getUpgrades().size() != 0)
 			{
 				upgradableCreatures.push_back(creature);
 			}
@@ -75,15 +75,15 @@ void UpgradeMenu::upgradePlayerCreatures(std::unique_ptr<Player>& player)
 		for(int i = 0; i < upgradableCreatures.size(); i++)
 		{
 			std::cout
+				<< "<" << i + 1 << "> Upgrade "
 				<< upgradableCreatures[i].get()->getName()
-				<< " can be upgraded. Press <"
-				<< i+1 << "> to upgrade it\n";
+				<< "\n";
 		}
 
 		if (upgradableCreatures.size() == 0)
 			break;
 
-		std::cout << "\nPress <0> to save XP for later\n";
+		std::cout << "\n<0> Save XP for later\n\n";
 
 		int intInput;
 		std::cin >> intInput;
@@ -98,57 +98,105 @@ void UpgradeMenu::upgradePlayerCreatures(std::unique_ptr<Player>& player)
 
 		int xpSpent = upgradeCreature(upgradableCreatures[intInput - 1], player->getExp());
 		player->spendExp(xpSpent);
-		for (auto cr : player->getCreatures())
-		{
-			std::cout << cr->getName();
-			std::cout << "\n";
-		}
 
+		std::cout << "\n";
 		system("pause");
-
-		
+		system("cls");
 	}
 }
 
 int UpgradeMenu::upgradeCreature(
 	std::shared_ptr<Creature>& creature, int availableExp)
-{	
+{
 	system("cls");
 
 	int xpRequired = creature->getMaxExp();
 	std::string type = creature->getName();
-	if (type == "Peasant")
+
+	auto upgrades = creature->getUpgrades();
+
+	if (upgrades.size() == 0)
 	{
-		std::cout
-			<< "Peasant's available upgrades:\n"
-			<< "== 1 == Archer\n"
-			<< "== 2 == Knight\n"
-			<< "== 3 == Spirit\n"
-			<< "\n"
-			<< "Upgrade requires spending "
-			<< xpRequired << " xp\n"
-			<< "You currently have " << availableExp << " xp\n"
-			<< "\n"
-			<< "Select which creature do you want to upgrade into\n"
-			<< "Pres <0> to skip\n";
-
-		int intInput = -1;
-		std::cin >> intInput;
-		while (intInput < 0 || intInput > 3) 
-		{
-			std::cout << "Please choose the correct action\n";
-			std::cin >> intInput;
-		}
-
-		if (intInput == 0)
-			return 0;
-
-		switch (intInput)
-		{
-		case 1:
-			creature = std::make_shared<Archer>();
-			break;
-		}
+		std::cout << "There are no possible upgrades\n";
+		return 0;
 	}
+	
+	std::vector<std::shared_ptr<Creature> > creatureUpgradesVector;
+
+	std::cout << creature->getName() << "'s available upgrades\n";
+
+	int counter = 0;
+	for (auto upgradeClass : upgrades)
+	{
+		std::cout << "<" << counter+1 << "> " << creature->getName() << " -> ";
+		if (upgradeClass == Creature::CLASS::Archer)
+		{
+			creatureUpgradesVector.push_back(std::make_shared<Archer>());
+		}
+		if (upgradeClass == Creature::CLASS::Knight)
+		{
+			creatureUpgradesVector.push_back(std::make_shared<Knight>());
+		}
+		if (upgradeClass == Creature::CLASS::Spirit)
+		{
+			creatureUpgradesVector.push_back(std::make_shared<Spirit>());
+		}
+		if (upgradeClass == Creature::CLASS::Priest)
+		{
+			creatureUpgradesVector.push_back(std::make_shared<Priest>());
+		}
+		if (upgradeClass == Creature::CLASS::Warlock)
+		{
+			creatureUpgradesVector.push_back(std::make_shared<Warlock>());
+		}
+		if (upgradeClass == Creature::CLASS::Shinobi)
+		{
+			creatureUpgradesVector.push_back(std::make_shared<Shinobi>());
+		}
+		if (upgradeClass == Creature::CLASS::Anduin)
+		{
+			creatureUpgradesVector.push_back(std::make_shared<Anduin>());
+		}
+		if (upgradeClass == Creature::CLASS::Naruto)
+		{
+			creatureUpgradesVector.push_back(std::make_shared<Naruto>());
+		}
+		if (upgradeClass == Creature::CLASS::Hanzo)
+		{
+			creatureUpgradesVector.push_back(std::make_shared<Hanzo>());
+		}
+		if (upgradeClass == Creature::CLASS::Paladin)
+		{
+			creatureUpgradesVector.push_back(std::make_shared<Paladin>());
+		}
+
+		std::cout << creatureUpgradesVector[counter]->getName() << " : "
+			<< creatureUpgradesVector[counter]->getMaxHealth() << " hp, "
+			<< creatureUpgradesVector[counter]->getArmor() << " armor, "
+			<< creatureUpgradesVector[counter]->getInitiative() << " initiative\n";
+		for (auto skill : creatureUpgradesVector[counter]->getSkills())
+		{
+			std::cout << "   + " << skill->getSpellName() << "\n";
+		}
+
+		counter++;
+	}
+	std::cout << "\n";
+
+	int intInput = -1;
+	std::cin >> intInput;
+	while (intInput < 0 || intInput > creatureUpgradesVector.size())
+	{
+		std::cout << "Please choose the correct action\n";
+		std::cin >> intInput;
+	}
+
+	if (intInput == 0)
+		return 0;
+
+	std::cout << creature->getName() << " has been upgraded into ";
+	creature = creatureUpgradesVector.at(intInput - 1);
+	std::cout << creature->getName() << "\n";
+
 	return xpRequired;
 }

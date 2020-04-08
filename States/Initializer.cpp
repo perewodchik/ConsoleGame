@@ -1,8 +1,8 @@
 #include <States/Initializer.h>
 #include <Config.h>
-#include <Creatures/Peasant.h>
-#include <Creatures/Apprentice.h>
-#include <Creatures/Assassin.h>
+#include <Creatures/BaseTier/Peasant.h>
+#include <Creatures/BaseTier/Apprentice.h>
+#include <Creatures/BaseTier/Assassin.h>
 #include <string>
 
 Initializer::Initializer(std::vector<std::unique_ptr<Player> >& players,
@@ -28,9 +28,9 @@ void Initializer::run() {
 			<< "| # |    CLASS   | HP | ARMOR | EXP_UPGRADE | EXP_WHEN_KILLED | INITIATIVE |\n"
 			<< "+---+------------+----+-------+-------------+-----------------+------------+\n"
 			<< "| 1 |    PEASANT | 45 |  10   |      40     |        15       |     15     |\n"
-			<< "| 2 |   ASSASSIN | 35 |   0   |      50     |        40       |     35     |\n"
+			<< "| 2 |   ASSASSIN | 35 |  15   |      50     |        40       |     35     |\n"
 			<< "| 3 | APPRENTICE | 50 |   0   |      30     |        25       |     10     |\n"
-			<< "+---+------------+----+-------+-------------+-----------------+------------+\n";
+			<< "+---+------------+----+-------+-------------+-----------------+------------+\n\n";
 		
 		int characters_selected = 0;
 		int numInput;
@@ -74,6 +74,7 @@ void Initializer::run() {
 			}
 		}
 
+		std::cout << "\n";
 		system("pause");
 		system("cls");
 	}

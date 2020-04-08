@@ -41,18 +41,6 @@
     <ClCompile Include="Skills\MeleeAttack.cpp">
       <Filter>Skills</Filter>
     </ClCompile>
-    <ClCompile Include="Creatures\Archer.cpp">
-      <Filter>Creatures</Filter>
-    </ClCompile>
-    <ClCompile Include="Creatures\Peasant.cpp">
-      <Filter>Creatures</Filter>
-    </ClCompile>
-    <ClCompile Include="Creatures\Creature.cpp">
-      <Filter>Creatures</Filter>
-    </ClCompile>
-    <ClCompile Include="States\Initializer.cpp">
-      <Filter>States</Filter>
-    </ClCompile>
     <ClCompile Include="States\UpgradeMenu.cpp">
       <Filter>States</Filter>
     </ClCompile>
@@ -62,19 +50,79 @@
     <ClCompile Include="Skills\Defend.cpp">
       <Filter>Skills</Filter>
     </ClCompile>
-    <ClCompile Include="Misc\TargetController.cpp">
-      <Filter>Misc</Filter>
+    <ClCompile Include="Skills\Heal.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Skills\GiveDefend.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Misc\Map.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Creatures\Apprentice.cpp">
+    <ClCompile Include="Misc\TargetController.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="Skills\HealAll.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Skills\Heal.cpp">
+    <ClCompile Include="Skills\Drain.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Creatures\Assassin.cpp">
+    <ClCompile Include="Creatures\BaseTier\Apprentice.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Creatures\BaseTier\Assassin.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Creatures\BaseTier\Peasant.cpp">
+      <Filter>Creatures</Filter>
+    </ClCompile>
+    <ClCompile Include="Creatures\MiddleTier\Archer.cpp">
+      <Filter>Creatures</Filter>
+    </ClCompile>
+    <ClCompile Include="Creatures\MiddleTier\Knight.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Creatures\MiddleTier\Priest.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Creatures\MiddleTier\Shinobi.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Creatures\MiddleTier\Spirit.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Creatures\MiddleTier\Warlock.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Creatures\Creature.cpp">
+      <Filter>Creatures</Filter>
+    </ClCompile>
+    <ClCompile Include="States\Initializer.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="Creatures\HighTier\Anduin.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Skills\Resurrect.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Skills\Rasengan.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Creatures\HighTier\Hanzo.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Skills\Naruto.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Skills\SplitArrows.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Skills\Sacrifice.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Paladin.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -97,15 +145,6 @@
     <ClInclude Include="Skills\MeleeAttack.h">
       <Filter>Skills</Filter>
     </ClInclude>
-    <ClInclude Include="Creatures\Archer.h">
-      <Filter>Creatures</Filter>
-    </ClInclude>
-    <ClInclude Include="Creatures\Peasant.h">
-      <Filter>Creatures</Filter>
-    </ClInclude>
-    <ClInclude Include="Creatures\Creature.h">
-      <Filter>Creatures</Filter>
-    </ClInclude>
     <ClInclude Include="States\Initializer.h">
       <Filter>States</Filter>
     </ClInclude>
@@ -115,31 +154,88 @@
     <ClInclude Include="Skills\Defend.h">
       <Filter>Skills</Filter>
     </ClInclude>
-    <ClInclude Include="Misc\TargetController.h">
-      <Filter>Misc</Filter>
+    <ClInclude Include="States\Battlefield.h">
+      <Filter>States</Filter>
     </ClInclude>
-    <ClInclude Include="Misc\Position.h">
-      <Filter>Misc</Filter>
+    <ClInclude Include="Skills\Heal.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Misc\Map.h">
+    <ClInclude Include="Skills\GiveDefend.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Misc\ITargetHelper.h">
       <Filter>Misc</Filter>
     </ClInclude>
-    <ClInclude Include="States\Battlefield.h">
-      <Filter>States</Filter>
-    </ClInclude>
     <ClInclude Include="Misc\IUser.h">
       <Filter>Misc</Filter>
     </ClInclude>
-    <ClInclude Include="Creatures\Apprentice.h">
+    <ClInclude Include="Misc\Map.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Skills\Heal.h">
+    <ClInclude Include="Misc\Position.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\TargetController.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Skills\HealAll.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Creatures\Assassin.h">
+    <ClInclude Include="Skills\Drain.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Creatures\BaseTier\Assassin.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Creatures\BaseTier\Apprentice.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Creatures\BaseTier\Peasant.h">
+      <Filter>Creatures</Filter>
+    </ClInclude>
+    <ClInclude Include="Creatures\MiddleTier\Archer.h">
+      <Filter>Creatures</Filter>
+    </ClInclude>
+    <ClInclude Include="Creatures\MiddleTier\Knight.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Creatures\MiddleTier\Priest.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Creatures\MiddleTier\Shinobi.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Creatures\MiddleTier\Spirit.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Creatures\Creature.h">
+      <Filter>Creatures</Filter>
+    </ClInclude>
+    <ClInclude Include="Creatures\MiddleTier\Warlock.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Creatures\HighTier\Anduin.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Skills\Resurrect.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Creatures\HighTier\Naruto.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Skills\Rasengan.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Creatures\HighTier\Hanzo.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Skills\SplitArrows.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Skills\Sacrifice.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Creatures\HighTier\Paladin.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

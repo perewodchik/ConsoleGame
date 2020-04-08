@@ -1,10 +1,11 @@
 #pragma once
 #include <Creatures/Creature.h>
+#include <Skills/Heal.h>
 #include <Skills/RangedAttack.h>
 
-class Archer : public Creature
+class Apprentice : public Creature
 {
 public:
-	Archer();
+	Apprentice();
 };
 

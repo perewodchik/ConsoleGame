@@ -2,10 +2,10 @@
 #include <Skills/Skill.h>
 #include <Creatures/Creature.h>
 
-class RangedAttack : public Skill
+class Drain : public Skill
 {
 public:
-	RangedAttack(int damage);
+	Drain(int damage);
 	virtual void emit();
 private:
 	int m_damage;

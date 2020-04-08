@@ -1,4 +1,5 @@
 #include <Misc/Map.h>
+#include <iomanip>
 
 Map::Map(std::vector<std::unique_ptr<Player> >& players)
 	: m_players(players)
@@ -79,22 +80,25 @@ void Map::drawMap()
 	for (int h = 0; h < BATTLEFIELD_HEIGHT; h++)
 	{
 		if (h % 2 == 0)
-			std::cout << "+---+---+\n";
+			std::cout << "+--------------------+--------------------+\n";
 		for (int w = 0; w < BATTLEFIELD_WIDTH; w++)
 		{
 			auto creature = this->getCreatureByCoordinates(h, w);
 			if (creature == nullptr || creature->isDead())
 			{
-				std::cout << "| . ";
+				std::cout << "| " << std::setw(10)
+					<< creature->getName() << ":   DEAD ";
 			}
 			else
 			{
-				std::cout << "| " << 
-					creature->getTag() << " ";
+				std::cout << "| " << std::setw(10)
+					<< creature->getName() << ": "
+					<< std::setw(3) << creature->getHealth()
+					<< " HP ";
 			}
 			
 		}
 		std::cout << "|\n";
 	}
-	std::cout << "+---+---+\n";
+	std::cout << "+--------------------+--------------------+\n";
 }

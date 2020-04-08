@@ -23,7 +23,7 @@ Battlefield::Battlefield(std::vector<std::unique_ptr<Player> >& players, TargetC
 		{
 			creature->setIsDead(false);
 		}
-		creature->receiveHeal(creature->getMaxHealth());
+		creature->receiveHeal(1000);
 	}
 
 	std::cout << "Starting the battle!\n";
@@ -70,7 +70,7 @@ void Battlefield::run()
 		}
 		std::cout << "\n";
 		m_map->drawMap();
-		std::cout << "\n\n";
+		std::cout << "\n";
 
 		//Finding first alive creature to take turn
 		int iDeadCheck = 0;
@@ -78,6 +78,10 @@ void Battlefield::run()
 		while (currentCreature->isDead() == true) {
 			iDeadCheck++;
 			currentCreature = m_creaturesOrder[iDeadCheck];
+		}
+
+		if (currentCreature->getIsDefending() == true) {
+			currentCreature->stopDefending();
 		}
 
 		std::cout
@@ -94,27 +98,20 @@ void Battlefield::run()
 		{
 			std::cout 
 					<< ">> "
-					<< std::setw(12) << std::left
+					<< std::setw(20) << std::left
 					<< skills[i]->getSpellName()
 					<< "[" << i+1 << "]\n";
 		}
+		std::cout << "\n";
 
-		std::cout << "\n\n.. Show Advanced Map [0]\n";
-		
 		int numInput;
 		std::cin >> numInput;
-		while (numInput < 0 || numInput > skills.size())
+		while (numInput <= 0 || numInput > skills.size())
 		{
 			std::cout << "Please select the correct action\n";
 			std::cin >> numInput;
 		}
-			
-		if (numInput == 0)
-		{
-			std::cout << "You have chosen adv map, but it doesn't work yet\n";
-			continue;
-		}
-		
+					
 		system("cls");
 
 		//Entering skill casting menu
@@ -144,11 +141,12 @@ void Battlefield::run()
 		m_creaturesOrder.push_back(currentCreature);
 		m_creaturesOrder.erase(m_creaturesOrder.begin()+iDeadCheck);
 		
+		std::cout << "\n";
 		system("pause");
 		system("cls");
 	}
 
-	std::cout << m_players[m_findWinner()-1]->getName() << " has won the round!\n";
+	std::cout << m_players[m_findWinner()-1]->getName() << " has won the round!\n\n";
 	for (int i = 0; i < m_players.size(); i++)
 	{
 		std::cout << m_players[i]->getName() << " currently has "

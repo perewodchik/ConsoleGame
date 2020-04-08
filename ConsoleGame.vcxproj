@@ -155,11 +155,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Creatures\Assassin.cpp" />
-    <ClCompile Include="Creatures\Apprentice.cpp" />
-    <ClCompile Include="Creatures\Archer.cpp" />
+    <ClCompile Include="Creatures\HighTier\Anduin.cpp" />
+    <ClCompile Include="Creatures\BaseTier\Assassin.cpp" />
+    <ClCompile Include="Creatures\BaseTier\Apprentice.cpp" />
+    <ClCompile Include="Creatures\MiddleTier\Archer.cpp" />
+    <ClCompile Include="Creatures\MiddleTier\Knight.cpp" />
+    <ClCompile Include="Creatures\MiddleTier\Priest.cpp" />
+    <ClCompile Include="Creatures\MiddleTier\Shinobi.cpp" />
+    <ClCompile Include="Creatures\HighTier\Hanzo.cpp" />
+    <ClCompile Include="Paladin.cpp" />
+    <ClCompile Include="Skills\Sacrifice.cpp" />
+    <ClCompile Include="Skills\Naruto.cpp" />
+    <ClCompile Include="Skills\Rasengan.cpp" />
+    <ClCompile Include="Skills\Resurrect.cpp" />
+    <ClCompile Include="Skills\Drain.cpp" />
+    <ClCompile Include="Skills\HealAll.cpp" />
+    <ClCompile Include="Skills\GiveDefend.cpp" />
     <ClCompile Include="Skills\Heal.cpp" />
     <ClCompile Include="Skills\MeleeAttack.cpp" />
+    <ClCompile Include="Creatures\MiddleTier\Spirit.cpp" />
+    <ClCompile Include="Skills\SplitArrows.cpp" />
     <ClCompile Include="States\Battlefield.cpp" />
     <ClCompile Include="ConsoleGame.cpp" />
     <ClCompile Include="Creatures\Creature.cpp" />
@@ -167,19 +182,35 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="States\Initializer.cpp" />
     <ClCompile Include="Misc\Map.cpp" />
-    <ClCompile Include="Creatures\Peasant.cpp" />
+    <ClCompile Include="Creatures\BaseTier\Peasant.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Skills\RangedAttack.cpp" />
     <ClCompile Include="Skills\Skill.cpp" />
     <ClCompile Include="Misc\TargetController.cpp" />
     <ClCompile Include="States\UpgradeMenu.cpp" />
+    <ClCompile Include="Creatures\MiddleTier\Warlock.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Creatures\Assassin.h" />
-    <ClInclude Include="Creatures\Apprentice.h" />
-    <ClInclude Include="Creatures\Archer.h" />
+    <ClInclude Include="Creatures\HighTier\Anduin.h" />
+    <ClInclude Include="Creatures\BaseTier\Assassin.h" />
+    <ClInclude Include="Creatures\BaseTier\Apprentice.h" />
+    <ClInclude Include="Creatures\MiddleTier\Archer.h" />
+    <ClInclude Include="Creatures\MiddleTier\Knight.h" />
+    <ClInclude Include="Creatures\MiddleTier\Priest.h" />
+    <ClInclude Include="Creatures\MiddleTier\Shinobi.h" />
+    <ClInclude Include="Creatures\HighTier\Naruto.h" />
+    <ClInclude Include="Creatures\HighTier\Hanzo.h" />
+    <ClInclude Include="Creatures\HighTier\Paladin.h" />
+    <ClInclude Include="Skills\Sacrifice.h" />
+    <ClInclude Include="Skills\Rasengan.h" />
+    <ClInclude Include="Skills\Resurrect.h" />
+    <ClInclude Include="Skills\Drain.h" />
+    <ClInclude Include="Skills\HealAll.h" />
+    <ClInclude Include="Skills\GiveDefend.h" />
     <ClInclude Include="Skills\Heal.h" />
     <ClInclude Include="Skills\MeleeAttack.h" />
+    <ClInclude Include="Creatures\MiddleTier\Spirit.h" />
+    <ClInclude Include="Skills\SplitArrows.h" />
     <ClInclude Include="States\Battlefield.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="Creatures\Creature.h" />
@@ -189,13 +220,14 @@
     <ClInclude Include="Misc\ITargetHelper.h" />
     <ClInclude Include="Misc\IUser.h" />
     <ClInclude Include="Misc\Map.h" />
-    <ClInclude Include="Creatures\Peasant.h" />
+    <ClInclude Include="Creatures\BaseTier\Peasant.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Misc\Position.h" />
     <ClInclude Include="Skills\RangedAttack.h" />
     <ClInclude Include="Skills\Skill.h" />
     <ClInclude Include="Misc\TargetController.h" />
     <ClInclude Include="States\UpgradeMenu.h" />
+    <ClInclude Include="Creatures\MiddleTier\Warlock.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Game_rules.txt" />

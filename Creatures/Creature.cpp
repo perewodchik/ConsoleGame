@@ -1,9 +1,8 @@
-#include <Creatures/Creature.h>
+#include "Creature.h"
 #include <Skills/Defend.h>
 
-Creature::Creature(int hp, int armor, int initiative, int maxExp, int killExp, std::string name, char tag)
+Creature::Creature(int hp, int armor, int initiative, int maxExp, int killExp, std::string name)
 {
-	m_canBeUpgraded = true;
 	m_isDefending = false;
 	m_health = hp;
 	m_maxHealth = hp;
@@ -12,9 +11,10 @@ Creature::Creature(int hp, int armor, int initiative, int maxExp, int killExp, s
 	m_killExp = killExp;
 	m_initiative = initiative;
 	m_name = name;
-	m_tag = tag;
+	m_tag = name[0];
 	m_team = -1;
 	m_isDead = false;
+	m_evasion = 0;
 	m_skills.push_back(std::make_unique<Defend>());
 }
 
@@ -37,7 +37,21 @@ int Creature::takeDamage(int value)
 	return curHealth - m_health;
 }
 
+int Creature::receiveArmor(int value)
+{
+	int curArmor = m_armor;
+	m_armor += value;
+	if (m_armor > 100)
+		m_armor = 100;
+	return m_armor - curArmor;
+}
+
 void Creature::startDefending()
 {
 	m_isDefending = true;
+}
+
+void Creature::stopDefending()
+{
+	m_isDefending = false;
 }

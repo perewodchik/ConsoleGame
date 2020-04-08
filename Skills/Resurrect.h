@@ -2,12 +2,12 @@
 #include <Skills/Skill.h>
 #include <Creatures/Creature.h>
 
-class RangedAttack : public Skill
+class Resurrect : public Skill
 {
 public:
-	RangedAttack(int damage);
+	Resurrect();
 	virtual void emit();
 private:
-	int m_damage;
+	bool m_used;
 };
 
