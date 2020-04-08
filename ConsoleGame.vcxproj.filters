@@ -113,16 +113,16 @@
     <ClCompile Include="Creatures\HighTier\Hanzo.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Skills\Naruto.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Skills\SplitArrows.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Skills\Sacrifice.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Paladin.cpp">
+    <ClCompile Include="Creatures\HighTier\Paladin.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Creatures\HighTier\Naruto.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -238,10 +238,5 @@
     <ClInclude Include="Creatures\HighTier\Paladin.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Game_rules.txt">
-      <Filter>Файлы заголовков</Filter>
-    </Text>
   </ItemGroup>
 </Project>

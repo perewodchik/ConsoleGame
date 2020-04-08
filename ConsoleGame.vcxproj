@@ -163,9 +163,9 @@
     <ClCompile Include="Creatures\MiddleTier\Priest.cpp" />
     <ClCompile Include="Creatures\MiddleTier\Shinobi.cpp" />
     <ClCompile Include="Creatures\HighTier\Hanzo.cpp" />
-    <ClCompile Include="Paladin.cpp" />
+    <ClCompile Include="Creatures\HighTier\Paladin.cpp" />
     <ClCompile Include="Skills\Sacrifice.cpp" />
-    <ClCompile Include="Skills\Naruto.cpp" />
+    <ClCompile Include="Creatures\HighTier\Naruto.cpp" />
     <ClCompile Include="Skills\Rasengan.cpp" />
     <ClCompile Include="Skills\Resurrect.cpp" />
     <ClCompile Include="Skills\Drain.cpp" />
@@ -228,9 +228,6 @@
     <ClInclude Include="Misc\TargetController.h" />
     <ClInclude Include="States\UpgradeMenu.h" />
     <ClInclude Include="Creatures\MiddleTier\Warlock.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Game_rules.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
