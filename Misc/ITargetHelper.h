@@ -7,6 +7,7 @@ class Creature;
 class ITargetHelper
 {
 public:
+	virtual ~ITargetHelper() {};
 	enum  class TYPE { enemy, friendly };
 
 	virtual std::shared_ptr<Creature> getSingleTarget(const Position& pos, TYPE type) = 0;
